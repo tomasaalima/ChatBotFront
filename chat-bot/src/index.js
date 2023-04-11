@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Sobre from './pages/About';
 import ErrorPage from './pages/Error';
 import Chat from './pages/Chat';
+import Login from './pages/Login';
 
 // const router = createBrowserRouter([
 //   {
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
         {
           path: "/chat",
           element: <Chat/>
+        }
+        ,
+        {
+          path: "/login",
+          element: <Login/>
         }
     ]
   }
