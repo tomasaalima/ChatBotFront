@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'ground-img': "url('../public/img/backg.png')",
+        'ground-img': "url('../public/img/background.png')",
       },
+<<<<<<< HEAD
       colors: {
         'message1': '#0088CC',
         'message2': '#556080',
@@ -18,6 +19,18 @@ module.exports = {
         '1/10': '10%',
         'total': '1%',
       }
+=======
+      fontFamily: {
+        'exo2': ['Almarai', 'Antic Didone', 'sans-serif'],
+        'oswald': ['Oswald', 'sans-serif'],
+        'roboto': ['Roboto', 'sans-serif'],
+      },
+      colors: {
+        'footer': '#187236',
+        'letter': '#014e1c',
+      },
+      
+>>>>>>> 41d87f89f2ab9ed52156d1cf3f06c2d1c32be4e5
     },
   },
   plugins: [],
