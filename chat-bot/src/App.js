@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Backg from './components/backg';
-import Footer from './components/footer';
-import Menu from './components/menu';
+import Backg from './components/Background';
+import Footer from './components/Footer';
+import Menu from './components/Menu';
 
 function App(){
 

@@ -8,7 +8,7 @@ function Sobre(){
                     <h1 className="-mt-9">Tire duvidas com nosso assistente a qualquer hora!</h1>
                     <div className="flex flex-row gap-20 w-full items-center justify-center mt-28">
                         <div className="w-52 h-48 text-black bg-gray-50 flex items-center justify-center shadow-lg">
-                        <img src="fdf" alt="Descrição da imagem" class="w-48 h-48 object-cover"></img>
+                            <img src="/img/Document-Card-icon.svg" alt="Descrição da imagem" class="w-48 h-48 object-cover"></img>
                         </div>
                         <div className="w-52 h-48 text-black bg-gray-50 flex items-center justify-center shadow-lg">
                             que
