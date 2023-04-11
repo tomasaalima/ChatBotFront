@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer(){
     return(
-        <div className="h-8 bg-green-600 flex items-center justify-center fixed text-white bottom-0 w-full ">
+        <div className="h-6 bg-footer flex items-center justify-center fixed text-white bottom-0 w-full font-roboto">
         Sistema desenvolvido para o IFPE
         </div>
     )

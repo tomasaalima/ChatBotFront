@@ -6,7 +6,6 @@ import App from './App';
 
 import Home from './pages/home';
 import Sobre from './pages/sobre';
-import Tutorial from './pages/tutorial';
 import ErrorPage from './pages/error';
 
 // const router = createBrowserRouter([
@@ -38,10 +37,6 @@ const router = createBrowserRouter([
           path: "/sobre",
           element: <Sobre/>
         },
-        {
-          path: "/tutorial",
-          element: <Tutorial/>
-        }
     ]
   }
 ]);
