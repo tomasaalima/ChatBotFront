@@ -12,7 +12,9 @@ function TextBox() {
             <form
               className="h-full w-full flex flex-row items-center place-content-between"
             >
-              <div className="flex-1">
+              <div 
+                className="flex-1"
+              >
                 <input 
                 type="text" 
                 id="first_name" 
