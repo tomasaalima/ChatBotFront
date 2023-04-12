@@ -6,6 +6,7 @@ function NavBar(){
         return {
             backgroundColor: isActive ? 'white' : 'transparent',  //Exceção do trasparent
             color : isActive ? 'darkgreen' : 'white',  //Usar cores hexadecimal
+            stroke : isActive ? '#11111' : 'white',
         }
     } 
 
@@ -14,7 +15,7 @@ function NavBar(){
         className="w-screen flex justify-center h-8 items-center top-3 absolute divide-x-2 font-roboto"
         >
             <NavLink 
-            to="/" 
+            to="/"           
             className="w-32 h-8 flex items-center justify-center" 
             style={linkStyle}
             > 

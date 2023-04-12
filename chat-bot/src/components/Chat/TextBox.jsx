@@ -4,7 +4,7 @@ function TextBox() {
   return (
       <div
           id="textBox"
-          className="h-9 w-4/5 relative bottom-2 left-1/10 bg-text-box rounded-lg z-20"
+          className="h-9 w-4/5 absolute bottom-2 left-1/10 bg-text-box rounded-lg z-20"
         >
           <div
             className="pr-2 h-full w-full"
