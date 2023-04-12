@@ -1,10 +1,12 @@
 import React from "react";
 import Background from '../components/Background';
 import Frame from "../components/Frame";
+import NavBar from "../components/NavBar";
 
 function About(){
     return (
         <>
+            <NavBar/>
             <Background/>
             <div 
                 className="absolute top-28 text-white flex justify-center w-full h-4/6"

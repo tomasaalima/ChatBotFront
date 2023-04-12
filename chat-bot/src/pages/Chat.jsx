@@ -2,10 +2,12 @@ import React from "react";
 import Message from "../components/Chat/Message";
 import TextBox from "../components/Chat/TextBox";
 import Background from "../components/Background";
+import NavBar from "../components/NavBar";
 
 function Chat () {
   return (
     <>
+      <NavBar/>
       <Background/>
       <div 
         className="absolute left-1/3 top-1/4 w-1/3 h-1/2 center bg-white shadow-xl overflow-hidden"
