@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 function App(){
 
   return(
-    <div className='h-screen w-full'>
+    <div className='h-screen w-full caret-transparent'>
       <Outlet/>
       <Footer/>
     </div>

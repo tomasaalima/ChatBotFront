@@ -8,6 +8,7 @@ import Sobre from './pages/About';
 import ErrorPage from './pages/Error';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
+import Recover from './pages/Recover';
 
 // const router = createBrowserRouter([
 //   {
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
         {
           path: "/login",
           element: <Login/>
+        }
+        ,
+        {
+          path: "/recover",
+          element: <Recover/>
         }
     ]
   }

@@ -15,7 +15,7 @@ function DataField(props) {
         {label}:
       </label>
       <input
-        className="border-b "
+        className="outline-none caret-black border-b"
         type={type}
         placeholder={holder}
       />

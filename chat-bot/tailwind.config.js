@@ -18,7 +18,7 @@ module.exports = {
         'letter': '#014e1c',
         'user-logo': '#24B0A0',
         'login-label': '#187236',
-        'button': '#3A9E5C',
+        'buttom': '#3A9E5C',
       },
       spacing: {
         '1/10': '10%',
