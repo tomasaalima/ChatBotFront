@@ -2,6 +2,7 @@ import React from "react";
 import Background from '../components/Background';
 import Frame from "../components/Frame";
 import NavBar from "../components/NavBar";
+import MakeLogin from "../components/MakeLogin";
 
 function About(){
     return (
@@ -11,6 +12,7 @@ function About(){
             <div 
                 className="absolute top-28 text-white flex justify-center w-full h-4/6"
             >
+                <MakeLogin/>
                 <div 
                     className=" flex flex-col justify-center items-center top-8 w-8/12 h-96"
                 >

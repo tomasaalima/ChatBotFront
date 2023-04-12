@@ -2,11 +2,13 @@ import React from "react";
 import MakeLogin from "../components/MakeLogin";
 import Background from "../components/Background";
 import Frame from "../components/Frame";
+import NavBar from "../components/NavBar";
 
 
 function Home(){
     return (
         <>
+            <NavBar/>
             <Background/>
             <div className="absolute top-28 text-white flex justify-center w-full h-4/6">
                     <MakeLogin/>

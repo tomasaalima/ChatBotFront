@@ -8,7 +8,7 @@ function ReturnButton({h, w, left, top, bg, color, value, to}) {
       to={to}
     >
       <div
-        className={`absolute top-${top} left-${left} h-${h} w-${w}`}
+        className={`absolute ${top} ${left} h-${h} w-${w}`}
       >
         <input
           className={`h-full w-full bg-${bg} text-${color} cursor-pointer`}
