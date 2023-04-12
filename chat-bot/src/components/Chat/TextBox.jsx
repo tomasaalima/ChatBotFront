@@ -4,7 +4,7 @@ function TextBox() {
   return (
       <div
           id="textBox"
-          className="h-9 w-4/5 relative bottom-2 left-1/10 bg-text-box rounded-lg z-20"
+          className="h-9 w-4/5 absolute bottom-2 left-1/10 bg-text-box rounded-lg z-20"
         >
           <div
             className="pr-2 h-full w-full"
@@ -12,7 +12,9 @@ function TextBox() {
             <form
               className="h-full w-full flex flex-row items-center place-content-between"
             >
-              <div className="flex-1">
+              <div 
+                className="flex-1"
+              >
                 <input 
                 type="text" 
                 id="first_name" 

@@ -2,7 +2,9 @@ import React from "react";
 
 function Robot() {
   return (
-    <div className="w-14">
+    <div 
+      className="w-14"
+    >
       <img
         className="h-auto max-w-full"
         src="/img/chat/bot.png"
