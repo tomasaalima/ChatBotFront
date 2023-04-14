@@ -9,6 +9,7 @@ import ErrorPage from './pages/Error';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Recover from './pages/Recover';
+import Edital from './pages/Edital';
 
 // const router = createBrowserRouter([
 //   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         {
           path: "/recover",
           element: <Recover/>
+        },
+        {
+          path: "/edital",
+          element: <Edital/>
         }
     ]
   }
