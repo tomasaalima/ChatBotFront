@@ -10,6 +10,7 @@ import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Recover from './pages/Recover';
 import Edital from './pages/Edital';
+import VidAndImage from './pages/VidAndImage';
 
 // const router = createBrowserRouter([
 //   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
         {
           path: "/edital",
           element: <Edital/>
+        },
+        {
+          path: "/home/starts",
+          element: <VidAndImage/>
         }
     ]
   }
