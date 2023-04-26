@@ -10,7 +10,10 @@ function Chat () {
       <NavBar/>
       <Background/>
       <div 
-        className="absolute left-1/3 top-1/4 w-1/3 h-1/2 center bg-white shadow-xl overflow-hidden"
+        className="absolute center bg-white shadow-xl overflow-hidden
+        mobile:left-1/10 mobile:top-1/4 mobile:w-4/5 mobile:h-1/2
+        desktop:left-1/4 desktop:top-1/4 desktop:w-1/2 desktop:h-1/2
+        "
       >
       <header
             className="bg-chat-header text-center text-white"

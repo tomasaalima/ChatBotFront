@@ -8,7 +8,7 @@ function DialogueBallon(props) {
 
   return (
       <div>
-        <div
+        <div //probleminha de cache?
           className={`w-48 h-16 absolute ${side}-16 flex flex-row justify-${(side === "left")?"start":"end"} z-0`}
         >
           <img
@@ -18,7 +18,7 @@ function DialogueBallon(props) {
           />
         </div>
         <div
-          className={`relative w-48 h-10 ${ballonColor} rounded-lg z-10`}
+          className={`relative w-48 min-h-10 ${ballonColor} rounded-lg z-10`}
         >
           <p
             className="p-2 text-xs text-white"

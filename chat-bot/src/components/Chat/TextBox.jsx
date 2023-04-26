@@ -18,7 +18,7 @@ function TextBox() {
                 <input 
                 type="text" 
                 id="first_name" 
-                class="bg-transparent border-0 text-gray-900 text-sm w-full p-2.5" 
+                class="bg-transparent outline-none caret-black border-0 text-gray-900 text-sm w-full p-2.5" 
                 placeholder="Por favor, digite aqui para interagir com o chat" 
                 required
                 />
