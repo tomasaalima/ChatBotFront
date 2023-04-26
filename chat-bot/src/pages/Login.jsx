@@ -13,7 +13,7 @@ function Login() {
         className="w-1/4 h-1/2 bg-white absolute left-middle-login top-1/4 shadow-2xl z-10 flex flex-col items-center"
       >
         <form
-          className="p-10 flex flex-col text-center items-center"
+          className="p-10 pb-4 flex flex-col text-center items-center"
         >
         <div
           className="rounded-full bg-user-logo w-1/3 mb-4"
@@ -32,17 +32,21 @@ function Login() {
           <DataField label="Email" type="email" holder="Digite seu email"/>
           <DataField label="Senha" type="password" holder="Digite sua senha"/>
         </form>
-        <NavLink
-          to="/recover"
+        <div
+          className="flex justify-end w-4/5"
         >
-          <p
-            className="text-red-400 text-xs underline absolute right-16 bottom-22"
+          <NavLink
+            to="/recover"
           >
-            Esqueceu sua senha?
-          </p>
-        </NavLink>
+            <p
+              className="text-red-400 text-xs underline"
+            >
+              Esqueceu sua senha?
+            </p>
+          </NavLink>
+        </div>
         <input
-          className="bg-buttom text-white w-16 h-7 mt-4 cursor-pointer"
+          className="bg-buttom text-white w-16 h-7 mt-10 cursor-pointer"
           type="submit"
           value="Login"/>
       </div>
