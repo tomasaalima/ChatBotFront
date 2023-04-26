@@ -32,8 +32,8 @@ function VidAndImage(){
                         </nav>
 
                         <div className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-black">
-                            <Video link="https://www.youtube.com/embed/H2bKVI7eS4s"></Video>
-                           
+                            <Video link="https://www.youtube.com/embed/qTH0b59Y00o"></Video>
+                            <Video link="https://www.youtube.com/embed/0IX7IgqIIe0"></Video>
                             
                         </div>
                     </div>
