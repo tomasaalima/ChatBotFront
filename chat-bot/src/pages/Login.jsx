@@ -12,7 +12,7 @@ function Login() {
       <div
         className=" bg-white absolute shadow-2xl z-10 flex flex-col items-center
         mobile:left-1/10 mobile:top-1/4 mobile:w-4/5 mobile:h-1/2
-        desktop:left-1/4 desktop:top-1/5 desktop:w-1/2 desktop:h-3/5
+        desktop:left-3/10 desktop:top-1/5 desktop:w-2/5 desktop:h-3/5
         "
       >
         <form
