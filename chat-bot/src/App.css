@@ -37,3 +37,17 @@ span:hover button{
 .buttondown{
     display: block;
 }
+
+.active{
+    background-color: white;
+    color: rgb(12, 75, 12);
+}
+
+.active2{
+    background-color: #000;
+    color: aqua;
+}
+
+
+
+
