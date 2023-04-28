@@ -1,6 +1,18 @@
-import React from "react";
+import {React, useState} from "react";
 
-function TextBox() {
+function TextBox(props) {
+  const [valor, setValor] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setValor("");
+    props.setUserMSG({'type':'user', 'text': valor});
+  }
+
+  const handleChange = (event) => {
+    setValor(event.target.value);
+  };
+
   return (
       <div
           id="textBox"
@@ -11,11 +23,14 @@ function TextBox() {
           >
             <form
               className="h-full w-full flex flex-row items-center place-content-between"
+              onSubmit={handleSubmit}
             >
               <div 
                 className="flex-1"
               >
                 <input 
+                value={valor}
+                onChange={handleChange}
                 type="text" 
                 id="first_name" 
                 class="bg-transparent outline-none caret-black border-0 text-gray-900 text-sm w-full p-2.5" 
@@ -25,6 +40,7 @@ function TextBox() {
               </div>
               <button
                 className="h-auto w-6"
+                type="submit"
               >
                 <img
                   className="h-auto w-6"

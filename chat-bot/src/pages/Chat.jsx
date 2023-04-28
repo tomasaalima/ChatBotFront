@@ -1,10 +1,40 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
+import axios from "axios";
 import Message from "../components/Chat/Message";
 import TextBox from "../components/Chat/TextBox";
 import Background from "../components/Background";
 import NavBar from "../components/NavBar";
 
+
 function Chat () {
+  const [hello, setHello] = useState([]);
+  const [conversation, setConversation] = useState([]);
+  const [userMSG, setUserMSG] = useState({'type':'', 'text': ''});
+  
+  useEffect(() => {
+    //Consultar mensagem de saudação
+    axios.get('http://localhost:8000/api/hello')
+    .then(response => setHello((response.data)));
+    
+  }, []);
+
+  useEffect(() => {
+    setConversation([...conversation, dialogueGen(userMSG.type, userMSG.text)]);
+  }, [userMSG]);
+  
+  useEffect(() => {
+    if (hello.resposta != undefined) {
+      //Renderizar primeira mensagem
+      setConversation([...conversation, dialogueGen("robot", hello.resposta)]);
+    }
+  }, [hello.resposta]);
+  
+  const dialogueGen = (type, text) => {
+    return (
+      <Message type={type} text={text}/>
+      )
+    }
+
   return (
     <>
       <NavBar/>
@@ -23,16 +53,9 @@ function Chat () {
         <div
           className="absolute w-full h-full center bg-white shadow-xl overflow-auto pb-16"
         >
-          <Message type="robot" text="robô falando"/>
-          <Message type="user" text="usuário falando"/>
-          <Message type="robot" text="robô falando"/>
-          <Message type="user" text="usuário falando"/>
-          <Message type="robot" text="robô falando"/>
-          <Message type="user" text="usuário falando"/>
-          <Message type="robot" text="robô falando"/>
-          <Message type="user" text="usuário falando"/>
+          {conversation}
         </div>
-          <TextBox/>
+        <TextBox setUserMSG={setUserMSG}/>
       </div>
     </>
   );
