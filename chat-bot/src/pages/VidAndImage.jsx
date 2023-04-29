@@ -1,19 +1,19 @@
 import React from "react";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
-import Video from "../components/Video";
+import PageVideos from "../components/PageVideos";
 import { useState } from "react";
-
-
+import PageManuais from "../components/PageManuais";
 
 
 function VidAndImage(){
 
     const [activeTab, setActiveTab] = useState("tab1");
-
+      
     const handleTabClick = (tabName) => {
-      setActiveTab(tabName);
+        setActiveTab(tabName);
     };
+
 
     return (
         
@@ -24,33 +24,43 @@ function VidAndImage(){
                 <div className=" flex flex-col justify-center items-center w-8/12">
                     <h1 className="font-oswald text-2xl mt-6">Aproveite nossos tutoriais!</h1>
                     <div className="flex flex-col w-11/12 h-4/6 items-center justify-center mt-28">
-                    <div>
-      <div className="text-black">
-        <button
-          onClick={() => handleTabClick("tab1")}
-          className={activeTab === "tab1" ? "active" : ""}
-        >
-          Tab 1
-        </button>
-        <button
-          onClick={() => handleTabClick("tab2")}
-          className={activeTab === "tab2" ? "active" : ""}
-        >
-          Tab 2
-        </button>
-        <button
-          onClick={() => handleTabClick("tab3")}
-          className={activeTab === "tab3" ? "active" : ""}
-        >
-          Tab 3
-        </button>
-      </div>
-      <div className="text-black text-3xl">
-        {activeTab === "tab1" && <p>Conteúdo da Tab 1</p>}
-        {activeTab === "tab2" && <p>Conteúdo da Tab 2</p>}
-        {activeTab === "tab3" && <p>Conteúdo da Tab 3</p>}
-      </div>
-    </div>
+                        <nav className="w-full flex justify-center h-11 items-center top-3 divide-x-2 font-roboto bg-footer">
+                            <button  
+                            onClick={() => handleTabClick("tab1")}
+                            className={`${
+                                activeTab === "tab1"
+                                ? "bg-gray-900 text-white"
+                                : "bg-gray-100 text-gray-900"
+                            } flex items-center justify-center w-2/4 font-roboto h-10`}
+                            
+                            >
+                            VÍDEOS
+                            </button>
+
+                            <button 
+                            onClick={() => handleTabClick("tab2")}
+                            className={`${
+                                activeTab === "tab2"
+                                ? "bg-gray-900 text-white"
+                                : "bg-gray-100 text-gray-900"
+                            } flex items-center justify-center w-2/4 font-roboto h-10`}                            >
+                            MANUAIS
+                            </button>
+                        </nav>
+
+                        <div className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-black">
+                        <div>
+                            {activeTab === "tab1" && (
+                                <div className="">
+                                    <PageVideos className="w-full h-full bg-slate-500"></PageVideos>
+                                    <PageVideos className="w-full h-full bg-slate-500"></PageVideos>
+                                </div>
+                            )}
+                            {activeTab === "tab2" && <PageManuais className="w-full h-full bg-slate-500"></PageManuais>}
+                        </div>
+                           
+                            
+                        </div>
                     </div>
                 </div>
             </div>

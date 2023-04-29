@@ -41,3 +41,74 @@ pt 2 ---------------
                            
                             
                         </div>
+
+  <Video link="https://www.youtube.com/embed/H2bKVI7eS4s"></Video>
+
+
+=========================================
+import React from "react";
+import NavBar from "../components/NavBar";
+import Background from "../components/Background";
+import Video from "../components/Video";
+import { useState } from "react";
+
+
+
+
+function VidAndImage(){
+
+    const [activeTab, setActiveTab] = useState("tab1");
+
+    const handleTabClick = (tabName) => {
+      setActiveTab(tabName);
+    };
+
+    return (
+        
+        <>
+        <NavBar/>
+        <Background/>
+            <div className="absolute top-20 text-white flex justify-center w-full h-5/6">
+                <div className=" flex flex-col justify-center items-center w-8/12">
+                    <h1 className="font-oswald text-2xl mt-6">Aproveite nossos tutoriais!</h1>
+                    <div className="flex flex-col w-11/12 h-4/6 items-center justify-center mt-8">
+                        <div>
+                            <nav className="w-full flex justify-center h-11 items-center top-3 font-roboto bg-footer">
+                                <div className="text-black">
+                                    <button
+                                    onClick={() => handleTabClick("tab1")}
+                                    className={`${
+                                        activeTab === "tab2"
+                                        ? "bg-gray-900 text-white"
+                                        : "bg-gray-100 text-gray-900"
+                                    } px-4 py-2 rounded-lg mr-2 `}        >
+                                    Vídeos
+                                    </button>
+                                    <button
+                                    onClick={() => handleTabClick("tab2")}
+                                    className={`${
+                                        activeTab === "tab1"
+                                        ? "bg-gray-900 text-white"
+                                        : "bg-gray-100 text-gray-900"
+                                    } px-4 py-2 rounded-lg mr-2`}
+                                    >
+                                    Manuais
+                                    </button>
+                                
+                                </div>
+                            </nav>
+                            <div className="text-black text-3xl h-full w-full bg-black grid grid-cols-2 gap-x-4">
+                                {activeTab === "tab1" && <p>Conteúdo da Tab 1</p>}
+                                {activeTab === "tab2" && <p>Conteúdo da Tab 2</p>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default VidAndImage;
+
+==================================
