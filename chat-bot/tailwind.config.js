@@ -4,6 +4,13 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens: {
+      'mobile': '425px', // tela pequena
+      'desktop': '1024px', // tela grande
+    },
+    minHeight: {
+      '10': '40px',
+    },
     extend: {
       backgroundImage: {
         'ground-img': "url('/public/img/background.png')",
@@ -21,6 +28,8 @@ module.exports = {
         'buttom': '#3A9E5C',
       },
       spacing: {
+        '3/10': '30%',
+        '1/5': '20%',
         '1/10': '10%',
         'total': '1%',
         'middle-login': '37.5%',
