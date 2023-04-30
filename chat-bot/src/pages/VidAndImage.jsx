@@ -1,9 +1,10 @@
 import React from "react";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
-import PageVideos from "../components/PageVideos";
 import { useState } from "react";
 import PageManuais from "../components/PageManuais";
+import Video from "../components/Video";
+import FrameEdital from "../components/FrameEdital";
 
 
 function VidAndImage(){
@@ -13,7 +14,6 @@ function VidAndImage(){
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
     };
-
 
     return (
         
@@ -29,8 +29,8 @@ function VidAndImage(){
                             onClick={() => handleTabClick("tab1")}
                             className={`${
                                 activeTab === "tab1"
-                                ? "bg-gray-900 text-white"
-                                : "bg-gray-100 text-gray-900"
+                                ? "bg-footer text-white"
+                                : "bg-slate-200 text-gray-900"
                             } flex items-center justify-center w-2/4 font-roboto h-10`}
                             
                             >
@@ -41,22 +41,30 @@ function VidAndImage(){
                             onClick={() => handleTabClick("tab2")}
                             className={`${
                                 activeTab === "tab2"
-                                ? "bg-gray-900 text-white"
-                                : "bg-gray-100 text-gray-900"
+                                ? "bg-footer text-white"
+                                : "bg-slate-200 text-gray-900"
                             } flex items-center justify-center w-2/4 font-roboto h-10`}                            >
                             MANUAIS
                             </button>
                         </nav>
 
-                        <div className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-black">
-                        <div>
+                        <div className="h-full w-full  text-black bg-white">
+                        <div className="h-full w-full">
                             {activeTab === "tab1" && (
-                                <div className="">
-                                    <PageVideos className="w-full h-full bg-slate-500"></PageVideos>
-                                    <PageVideos className="w-full h-full bg-slate-500"></PageVideos>
+                                <div className="h-full w-full grid grid-cols-2 gap-x-4 text-black">
+                                    <Video link="https://www.youtube.com/embed/H2bKVI7eS4s" description="Joji"></Video>
+                                    <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="ANALfabeto"></Video>
+                                
                                 </div>
                             )}
-                            {activeTab === "tab2" && <PageManuais className="w-full h-full bg-slate-500"></PageManuais>}
+                            {activeTab === "tab2"&& (
+                                <div className="h-full w-full grid grid-cols-2 gap-x-4 text-black">
+                                    <FrameEdital document="Permanencia 2023.1"></FrameEdital>
+                                    <FrameEdital document="Permanencia 2023.2"></FrameEdital>
+
+                                
+                                </div>
+                            )}
                         </div>
                            
                             
