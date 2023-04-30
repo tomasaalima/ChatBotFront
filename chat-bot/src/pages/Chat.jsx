@@ -6,35 +6,45 @@ import Loading from "../components/Chat/Loading";
 import Background from "../components/Background";
 import NavBar from "../components/NavBar";
 
-
 function Chat () {
-  const [hello, setHello] = useState([]);
-  const [conversation, setConversation] = useState([]);
-  const [userMSG, setUserMSG] = useState({'type': '', 'text': ''});
+  const [ hello, setHello ] = useState([]);
+  const [ conversation, setConversation ] = useState([]);
+  const [ userMSG, setUserMSG ] = useState({'type': '', 'text': ''});
   const [ subject, setSubject ] = useState({'theme': '', 'length': 2});
-  const [ search, setSearch ] = useState();
+  const [ ReadyToSearch, setReadyToSearch ] = useState(false);
+  const [ search, setSearch ] = useState('');
   const [ questions, setQuestions ] = useState([]);
   
+  //Consultar mensagem de saudação
   useEffect(() => {
-    //Consultar mensagem de saudação
     axios.get('http://localhost:8000/api/hello')
-    .then(response => setHello((response.data)));
-    
+    .then(response => setHello((response.data)))
+    .catch(error => {
+      setConversation([...conversation, loading()]);
+    });
   }, []);
 
+  //Captar mensagem do usuário
   useEffect(() => {
     if (userMSG.type !== '') {
       setConversation([...conversation, dialogueGen(userMSG.type, userMSG.text)]);
     }
+    if (ReadyToSearch === true) {
+      setSearch(userMSG.text);
+    }
   }, [userMSG]);
 
+  //Consultar perguntas respectivas às palavras chave
   useEffect(() => {
-    if (subject.theme !== '') {
-      axios.get('http://127.0.0.1:8000/api/keywords/fluxo/hatunamatata ontem manha login acessar fluxo teste')
-    .then(response => setQuestions((response.data)));
-    }
+    if (search) {
+      axios.get('http://localhost:8000/api/keywords/'+subject.theme+'/'+userMSG.text+'')
+    .then(response => setQuestions((response.data))).catch(error => {
+      setConversation([...conversation, loading()]);
+    });
+  }
   }, [search]);
 
+  //Tratamento de definição do tema das perguntas 
   useEffect(() => {
     if (conversation.length === subject.length) {
       switch(userMSG.text) {
@@ -59,20 +69,27 @@ function Chat () {
     }
   }, [conversation]);
   
+  //Tratamento de inicio de conversa aberta
   useEffect(() => {
     if (subject.theme !== '') {
       setConversation([...conversation, dialogueGen('robot', 'Descreva de maneira breve o problema que está enfrentando')])
+      setReadyToSearch(true);
     }
-  }, [subject]);
+  }, [subject.theme]);
 
+  //Tsc
+  useEffect(() => {
+    if (questions.length > 0) {
+      let value = questions.map((object) => object.pergunta).reduce((text, value) => text + "<br/>"+ value);
+      setConversation([...conversation, dialogueGen("robot", "Algum desses tópicos te ajuda?<br/>" + value)]);
+    }
+  }, [questions]);
+  
+  //Exibição de saudação
   useEffect(() => {
     if (hello.resposta !== undefined) {
-      //Renderizar primeira mensagem
       setConversation([...conversation, dialogueGen("robot", hello.resposta)]);
-    } 
-    // else if (!hello.resposta) {
-    //   setConversation([...conversation, loading()]);
-    // }
+    }
   }, [hello.resposta]);
 
   const loading = () => {
