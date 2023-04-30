@@ -1,19 +1,23 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect, useRef }  from "react";
+import { animateScroll as scroll } from 'react-scroll';
 import axios from "axios";
+
+import Background from "../components/Background";
+import Loading from "../components/Chat/Loading";
 import Message from "../components/Chat/Message";
 import TextBox from "../components/Chat/TextBox";
-import Loading from "../components/Chat/Loading";
-import Background from "../components/Background";
 import NavBar from "../components/NavBar";
 
 function Chat () {
-  const [ hello, setHello ] = useState([]);
   const [ conversation, setConversation ] = useState([]);
   const [ userMSG, setUserMSG ] = useState({'type': '', 'text': ''});
   const [ subject, setSubject ] = useState({'theme': '', 'length': 2});
+  const [ hello, setHello ] = useState([]);
   const [ ReadyToSearch, setReadyToSearch ] = useState(false);
   const [ search, setSearch ] = useState('');
   const [ questions, setQuestions ] = useState([]);
+
+  const ref = useRef(null);
   
   //Consultar mensagem de saudação
   useEffect(() => {
@@ -67,6 +71,7 @@ function Chat () {
       }
       }
     }
+    scrollToBottom();
   }, [conversation]);
   
   //Tratamento de inicio de conversa aberta
@@ -104,11 +109,20 @@ function Chat () {
       )
     }
 
+  const scrollToBottom = () => {
+      scroll.scrollToBottom({
+        containerId: 'my-scrollable-div',
+        duration: 200,
+        smooth: true,
+      });
+  };
+    
+
   return (
     <>
       <NavBar/>
       <Background/>
-      <div 
+      <div
         className="absolute center bg-white shadow-xl overflow-hidden
         mobile:left-1/10 mobile:top-1/4 mobile:w-4/5 mobile:h-1/2
         desktop:left-1/4 desktop:top-1/4 desktop:w-1/2 desktop:h-1/2
@@ -120,10 +134,12 @@ function Chat () {
             Chat Bot 
           </header>
         <div
+          ref={ref}
+          id="my-scrollable-div"
           className="absolute w-full h-full center bg-white shadow-xl overflow-auto pb-16"
         >
           {conversation}
-        </div>
+        </div>   
         <TextBox setUserMSG={setUserMSG}/>
       </div>
     </>
