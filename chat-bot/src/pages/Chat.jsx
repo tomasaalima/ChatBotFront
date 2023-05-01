@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef }  from "react";
 import { animateScroll as scroll } from 'react-scroll';
 import axios from "axios";
@@ -5,6 +6,7 @@ import axios from "axios";
 import Background from "../components/Background";
 import Loading from "../components/Chat/Loading";
 import Message from "../components/Chat/Message";
+import MenuMessage from "../components/Chat/MenuMessage";
 import TextBox from "../components/Chat/TextBox";
 import NavBar from "../components/NavBar";
 
@@ -12,6 +14,7 @@ function Chat () {
   const [ conversation, setConversation ] = useState([]);
   const [ userMSG, setUserMSG ] = useState({'type': '', 'text': ''});
   const [ subject, setSubject ] = useState({'theme': '', 'length': 2});
+  const [ selection, setSelection ] =useState({'text': '', 'counter': 0});
   const [ hello, setHello ] = useState([]);
   const [ ReadyToSearch, setReadyToSearch ] = useState(false);
   const [ search, setSearch ] = useState('');
@@ -82,11 +85,11 @@ function Chat () {
     }
   }, [subject.theme]);
 
-  //Tsc
+  //Exibição das perguntas
   useEffect(() => {
     if (questions.length > 0) {
-      let value = questions.map((object) => object.pergunta).reduce((text, value) => text + "<br/>"+ value);
-      setConversation([...conversation, dialogueGen("robot", "Algum desses tópicos te ajuda?<br/>" + value)]);
+      //let value = questions.map((object) => object.pergunta).reduce((text, value) => text + "<br/>"+ value);
+      setConversation([...conversation, menuGen()]);
     }
   }, [questions]);
   
@@ -97,12 +100,32 @@ function Chat () {
     }
   }, [hello.resposta]);
 
+  useEffect(() => {
+    if (selection.text !== '') {
+      if (selection.counter === 1) {
+        setConversation(prevConversation => [
+          ...prevConversation.slice(0, prevConversation.length - 1),
+          dialogueGen("robot", selection.text)
+        ]);
+      }else
+        setConversation([...conversation, dialogueGen("robot", selection.text)]);
+    }
+  }, [selection.text]);
+
   const loading = () => {
     return (
       <Loading/>
     );
   }
   
+  const menuGen = () => {
+    return (
+      <MenuMessage setSelection={setSelection}>
+        {questions}
+      </MenuMessage>
+    );
+  }
+
   const dialogueGen = (type, text) => {
     return (
       <Message type={type} text={text}/>
