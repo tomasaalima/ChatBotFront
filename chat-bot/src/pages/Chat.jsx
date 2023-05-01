@@ -47,7 +47,12 @@ function Chat () {
   useEffect(() => {
     if (search) {
       axios.get('http://localhost:8000/api/keywords/'+subject.theme+'/'+userMSG.text+'')
-    .then(response => setQuestions((response.data))).catch(error => {
+    .then(response => {
+      if (response.data.length === 0) {
+        setConversation([...conversation, dialogueGen("robot", "Acabei não encontrando nada relacionado a sua descrição. Poderia dar mais informações?")]);
+      }
+      setQuestions((response.data))
+    }).catch(error => {
       setConversation([...conversation, errorGen()]);
     });
   }
