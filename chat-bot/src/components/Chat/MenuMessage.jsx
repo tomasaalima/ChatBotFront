@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Robot from "./Robot";
 import MenuBallon from "./MenuBallon";
-import Message from "./Message";
-
 
 function MenuMessage(props) {
   const [ list, setList ] = useState([]);

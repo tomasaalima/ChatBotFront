@@ -4,9 +4,10 @@ import { animateScroll as scroll } from 'react-scroll';
 import axios from "axios";
 
 import Background from "../components/Background";
-import Loading from "../components/Chat/Loading";
+import BadLoading from "../components/Chat/BadLoading";
 import Message from "../components/Chat/Message";
 import MenuMessage from "../components/Chat/MenuMessage";
+import ValidateBlock from "../components/Chat/ValidateBlock";
 import TextBox from "../components/Chat/TextBox";
 import NavBar from "../components/NavBar";
 
@@ -15,6 +16,7 @@ function Chat () {
   const [ userMSG, setUserMSG ] = useState({'type': '', 'text': ''});
   const [ subject, setSubject ] = useState({'theme': '', 'length': 2});
   const [ selection, setSelection ] =useState({'text': '', 'counter': 0});
+  const [ validation, setValidation ] =useState({'result': ''});
   const [ hello, setHello ] = useState([]);
   const [ ReadyToSearch, setReadyToSearch ] = useState(false);
   const [ search, setSearch ] = useState('');
@@ -27,7 +29,7 @@ function Chat () {
     axios.get('http://localhost:8000/api/hello')
     .then(response => setHello((response.data)))
     .catch(error => {
-      setConversation([...conversation, loading()]);
+      setConversation([...conversation, errorGen()]);
     });
   }, []);
 
@@ -46,7 +48,7 @@ function Chat () {
     if (search) {
       axios.get('http://localhost:8000/api/keywords/'+subject.theme+'/'+userMSG.text+'')
     .then(response => setQuestions((response.data))).catch(error => {
-      setConversation([...conversation, loading()]);
+      setConversation([...conversation, errorGen()]);
     });
   }
   }, [search]);
@@ -82,6 +84,7 @@ function Chat () {
     if (subject.theme !== '') {
       setConversation([...conversation, dialogueGen('robot', 'Descreva de maneira breve o problema que está enfrentando')])
       setReadyToSearch(true);
+      setValidation({'result': ''});
     }
   }, [subject.theme]);
 
@@ -100,24 +103,37 @@ function Chat () {
     }
   }, [hello.resposta]);
 
+  //Tratamento na apresentação pelo componente com menu (MenuMessageGen) 
   useEffect(() => {
     if (selection.text !== '') {
       if (selection.counter === 1) {
         setConversation(prevConversation => [
-          ...prevConversation.slice(0, prevConversation.length - 1),
-          dialogueGen("robot", selection.text)
+          ...prevConversation.slice(0, prevConversation.length - 2),
+          dialogueGen("robot", selection.text), validationGen()
         ]);
       }else
-        setConversation([...conversation, dialogueGen("robot", selection.text)]);
+        setConversation([...conversation, dialogueGen("robot", selection.text), validationGen()]);
     }
   }, [selection.text]);
 
-  const loading = () => {
+  //Direciona segunda a validação (validationGen)
+  useEffect(() => {
+    if (validation.result === 'yes') {
+      setConversation([...conversation, dialogueGen("robot", "Fico em feliz em ter ajudado!")]);
+    } else if (validation.result === 'no'){
+      setDefaultProps();
+      setConversation([...conversation, dialogueGen("robot", "Digite: </br>'1' para falar sobre 'fluxo' </br>'2' para falar sobre 'editais' </br>'3' para falar sobre 'Documentação'")]);
+    }
+  }, [validation.result]);
+
+  //Indicar mal conectividade com o servidor
+  const errorGen = () => {
     return (
-      <Loading/>
+      <BadLoading/>
     );
   }
   
+  //Gerar componente de mensagem com menu
   const menuGen = () => {
     return (
       <MenuMessage setSelection={setSelection}>
@@ -126,12 +142,31 @@ function Chat () {
     );
   }
 
+  //Gerar componente de mensagem normal
   const dialogueGen = (type, text) => {
     return (
       <Message type={type} text={text}/>
       )
     }
 
+  //Finalizar a conversa ou iniciar um novo loop
+  const validationGen = () => {
+    return (
+      <ValidateBlock setValidation={setValidation}/>
+    );
+  }
+
+  //Resetar propriedades
+  const setDefaultProps = () => {
+    setSubject({'theme': '', 'length': conversation.length + 2});
+    setSearch(''); 
+    setHello([]); 
+    setQuestions([]);
+    setSelection({'text': '', 'counter': 0});
+    setReadyToSearch(false);
+  }
+
+  //Ir para o final do container que possui scroll
   const scrollToBottom = () => {
       scroll.scrollToBottom({
         containerId: 'my-scrollable-div',
