@@ -22,8 +22,8 @@ function FrameEdital(props){
                     <div className="flex">
                         <div className="w-full flex justify-end items-end ">
                             <img 
-                            src={`${src}`}
-                            alt={`${alt}`}
+                            src="/img/Download-Icon.svg"
+                            alt="Icon Download"
                             className="w-1/6 mr-0 "
 
                            

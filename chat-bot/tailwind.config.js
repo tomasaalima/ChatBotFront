@@ -40,6 +40,7 @@ module.exports = {
         'exo2': ['Almarai', 'Antic Didone', 'sans-serif'],
         'oswald': ['Oswald', 'sans-serif'],
         'roboto': ['Roboto', 'sans-serif'],
+        'error': ['Abel', 'sans-serif'],
       },
     },
   },

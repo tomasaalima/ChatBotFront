@@ -30,8 +30,8 @@ function Edital(){
                                 </nav>
                             </div>
                             <div className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-white ">
-                                <FrameEdital src="/img/Download-Icon.svg" alt="Icon Download" document="Permanencia 2023.1"></FrameEdital>
-                                <FrameEdital src="/img/Download-Icon.svg" alt="Icon Download" document="Moradia 2023.1"></FrameEdital>
+                                <FrameEdital document="Permanencia 2023.1"></FrameEdital>
+                                <FrameEdital document="Moradia 2023.1"></FrameEdital>
 
                             </div>
                         </div>
