@@ -47,7 +47,6 @@ function VidAndImage(){
                             MANUAIS
                             </button>
                         </nav>
-
                         <div className="h-full w-full  text-black bg-white">
                         <div className="h-full w-full">
                             {activeTab === "tab1" && (
@@ -66,8 +65,6 @@ function VidAndImage(){
                                 </div>
                             )}
                         </div>
-                           
-                            
                         </div>
                     </div>
                 </div>
