@@ -75,7 +75,7 @@ function Chat () {
           break;
         }
         default: {
-          setConversation([...conversation, dialogueGen("robot", "Digite: </br>'1' para falar sobre 'fluxo' </br>'2' para falar sobre 'editais' </br>'3' para falar sobre 'Documentação'")]);
+          setConversation([...conversation, dialogueGen("robot", "Digite: </br><strong>1</strong> para falar sobre <strong>Fluxo</strong> </br><strong>2</strong> para falar sobre <strong>Editais</strong> </br><strong>3</strong> para falar sobre <strong>Documentação</strong>")]);
           setSubject({'theme': '', 'length': subject.length + 2});
           break;
       }
@@ -96,7 +96,6 @@ function Chat () {
   //Exibição das perguntas
   useEffect(() => {
     if (questions.length > 0) {
-      //let value = questions.map((object) => object.pergunta).reduce((text, value) => text + "<br/>"+ value);
       setConversation([...conversation, menuGen()]);
     }
   }, [questions]);

@@ -2,7 +2,6 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
 import { useState } from "react";
-import PageManuais from "../components/PageManuais";
 import Video from "../components/Video";
 import FrameEdital from "../components/FrameEdital";
 
@@ -32,7 +31,6 @@ function VidAndImage(){
                                 ? "bg-footer text-white"
                                 : "bg-slate-200 text-gray-900"
                             } flex items-center justify-center w-2/4 font-roboto h-10`}
-                            
                             >
                             VÍDEOS
                             </button>

@@ -26,6 +26,8 @@ module.exports = {
         'user-logo': '#24B0A0',
         'login-label': '#187236',
         'buttom': '#3A9E5C',
+        'menu': '#0f5fff',
+        'menu-hamburguer': '#35834F',
       },
       spacing: {
         '3/10': '30%',

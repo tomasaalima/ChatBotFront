@@ -19,7 +19,7 @@ function MenuMessage(props) {
       return (
         <button
           type="button"
-          className="w-full p-2 hover:bg-gray-800 focus:bg-gray-800 text-start rounded-md" 
+          className="w-full p-2 hover:bg-gray-800 focus:bg-gray-800 bg-menu text-start rounded-md border " 
           onClick={() => {
             props.setSelection({'text': element.resposta, 'counter': counter});
             setCounter(1);
@@ -40,7 +40,7 @@ function MenuMessage(props) {
           <p
             className="pl-1"
           >
-          Algum desses tópicos diz algo sobre sua dúvida?
+          Algum desses tópicos diz algo sobre sua dúvida? ( Você pode clicar em algum deles para receber a resposta logo abaixo )
           </p>
           {answers}
       </MenuBallon>

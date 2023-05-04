@@ -23,7 +23,7 @@ function DialogueBallon(props) {
           className={`relative w-4/5 min-h-10 ${ballonColor} rounded-lg z-10`}
         >
           <p
-            className="p-2 text-xs text-white"
+            className="p-2 text-sm text-white"
           >
           {<div dangerouslySetInnerHTML={{ __html: `${text}` }} />}
           </p>

@@ -3,7 +3,7 @@ import React from "react";
 function ValidateBlock(props) {
   return (
     <div
-      className="h-7 text-gray-800 text-center mb-16 text-xs
+      className="h-7 text-gray-800 text-center mb-16 text-sm
       mobile:w-full
       desktop:w-68c
       "    
