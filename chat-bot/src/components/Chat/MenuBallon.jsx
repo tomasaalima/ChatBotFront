@@ -19,6 +19,7 @@ function MenuBallon(props) {
           />
         </div>
         <div
+          data-testid="ballon"
           className={`relative w-4/5 min-h-10 ${ballonColor} rounded-lg z-10 p-2 text-sm text-white flex flex-col gap-2`}
         >
           {props.children}

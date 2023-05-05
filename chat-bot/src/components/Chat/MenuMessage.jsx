@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Robot from "./Robot";
 import MenuBallon from "./MenuBallon";
+import { v4 as uuidv4 } from 'uuid';
 
 function MenuMessage(props) {
   const [ list, setList ] = useState([]);
@@ -16,8 +17,10 @@ function MenuMessage(props) {
   
   if (props) {
     answers = list.map((element) => {
+      const id = uuidv4();
       return (
         <button
+          key={id}
           type="button"
           className="w-full p-2 hover:bg-gray-800 focus:bg-gray-800 bg-menu text-start rounded-md border " 
           onClick={() => {
@@ -38,6 +41,7 @@ function MenuMessage(props) {
       <Robot/>
       <MenuBallon side="left">
           <p
+            data-testid="paragraph"
             className="pl-1"
           >
           Algum desses tópicos diz algo sobre sua dúvida? ( Você pode clicar em algum deles para receber a resposta logo abaixo )

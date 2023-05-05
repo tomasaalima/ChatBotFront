@@ -8,7 +8,7 @@ function Login() {
     <main
       className="bg-ground-login w-full h-full bg-cover bg-no-repeat bg-center relative z-0"
     >
-      <ReturnButton h="8" w="14" left="left-10" top="top-10" bg="buttom" value="Voltar" color="white" to="/"/>
+      <ReturnButton h="8" left="left-10" top="top-10" bg="buttom" value="Voltar" color="white" to="/"/>
       <div
         className=" bg-white absolute shadow-2xl z-10 flex flex-col items-center justify-center
         mobile:left-1/10 mobile:top-1/4 mobile:w-4/5 mobile:h-1/2
