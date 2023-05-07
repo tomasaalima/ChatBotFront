@@ -1,14 +1,12 @@
 import React from "react";
 
-function DialogueBallon(props) {
+function MenuBallon(props) {
   const { side } = props;
-  const { text } = props;
 
   const ballonColor = (side === "left")?"bg-message1": "bg-message2";
 
   return (
       <div
-        data-testid="dialog-balloon"
         className={`w-1/2 flex flex-row justify-${(side === "left")?"start":"end"} self-end`}
       >
         <div 
@@ -21,16 +19,13 @@ function DialogueBallon(props) {
           />
         </div>
         <div
-          className={`relative w-4/5 min-h-10 ${ballonColor} rounded-lg z-10`}
+          data-testid="ballon"
+          className={`relative w-4/5 min-h-10 ${ballonColor} rounded-lg z-10 p-2 text-sm text-white flex flex-col gap-2`}
         >
-          <div
-            className="p-2 text-sm text-white"
-          >
-          {<div dangerouslySetInnerHTML={{ __html: `${text}` }} />}
-          </div>
+          {props.children}
         </div>
       </div>
   );
 }
 
-export default DialogueBallon;
+export default MenuBallon;

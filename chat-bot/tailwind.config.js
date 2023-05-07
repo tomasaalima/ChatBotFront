@@ -4,6 +4,13 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens: {
+      'mobile': '425px', // tela pequena
+      'desktop': '1024px', // tela grande
+    },
+    minHeight: {
+      '10': '40px',
+    },
     extend: {
       backgroundImage: {
         'ground-img': "url('/public/img/background.png')",
@@ -19,17 +26,23 @@ module.exports = {
         'user-logo': '#24B0A0',
         'login-label': '#187236',
         'buttom': '#3A9E5C',
+        'menu': '#0f5fff',
+        'menu-hamburguer': '#35834F',
       },
       spacing: {
+        '3/10': '30%',
+        '1/5': '20%',
         '1/10': '10%',
         'total': '1%',
         'middle-login': '37.5%',
         '22': '88px',
+        '68c': '68%',
       },
       fontFamily: {
         'exo2': ['Almarai', 'Antic Didone', 'sans-serif'],
         'oswald': ['Oswald', 'sans-serif'],
         'roboto': ['Roboto', 'sans-serif'],
+        'error': ['Abel', 'sans-serif'],
       },
     },
   },

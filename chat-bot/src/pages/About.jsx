@@ -25,8 +25,8 @@ function About(){
                     <div 
                         className="flex flex-col w-full sm:flex-col md:flex-row sm:gap-5 md:gap-20 gap-20 items-center justify-center sm:mt-10 md:mt-28 mt-28 sm:justify-end sm:justify-center"
                     >
-                        <Frame src="/img/Document-Card-icon.svg" alt="Descrição da imagem" className="w-24 h-24 object-cover" tittle="titulo"/>
-                        <Frame src="/img/Document2-Card-Icon.svg" alt="Descrição da imagem" className="w-24 h-24 object-cover" tittle="titulo"/>
+                        <Frame src="/img/icon-document.png" alt="Descrição da imagem" className="w-20 object-cover" tittle="titulo"/>
+                        <Frame src="/img/icon-document.png" alt="Descrição da imagem" className="w-20 object-cover" tittle="titulo"/>
                     </div>
                 </div>
             </div>

@@ -1,36 +1,99 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBar(){
-
-    const linkStyle = ({isActive}) => {
-        return {
-            backgroundColor: isActive ? 'white' : 'transparent',  //Exceção do trasparent
-            color : isActive ? 'darkgreen' : 'white',  //Usar cores hexadecimal
-            stroke : isActive ? '#11111' : 'white',
-        }
-    } 
+    const [ menu, setMenu ] = useState('closed');
 
     return (
-            <nav>
-                <div className="w-screen flex justify-center h-8 items-center top-3 absolute divide-x-2 font-roboto">
-                    <NavLink 
-                    to="/"           
-                    className="w-32 h-8 flex items-center justify-center" 
-                    style={linkStyle}
-                    > 
-                    <img src="/img/Home-Nav-Icon.svg" alt="Icon Home" className="w-5 mr-2 -mt-1"/>  
-                    HOME
-                    </NavLink>
+        <>
+            <nav 
+            className="w-screen flex justify-center h-8 items-center top-3 absolute divide-x-2 font-roboto
+            mobile:hidden
+            desktop:flex
+            "
+            >
+                <NavLink 
+            
+                activeClassName="active"
+                to="/"           
+                className="w-32 h-8 flex items-center justify-center text-white" 
+                > 
+                
+                HOME
+                </NavLink>
 
-                    <NavLink 
-                    to="/sobre" 
-                    className="w-32 h-8 flex items-center justify-center" 
-                    style={linkStyle}
-                    >
-                    SOBRE
-                    </NavLink>
-                </div>  
+                <NavLink 
+                activeClassName="active"
+                to="/sobre" 
+                className="w-32 h-8 flex items-center justify-center text-white" 
+                >
+                SOBRE
+                </NavLink>
             </nav>
+            <button
+                className="absolute w-10 top-3 right-4 
+                desktop:hidden
+                mobile:flex
+                "
+                onClick={() => {
+                    (menu === 'opened' ? setMenu('closed') : setMenu('opened'))
+                }}
+            >   
+                {menu === 'opened' && 
+                    <img
+                        className="w-8"
+                        src="/img/crossIcon.svg"
+                        alt="Ícone de x"
+                    >
+                    </img>
+                }
+                {menu === 'closed' &&
+                <img
+                    className="w-full"
+                    src="/img/menuIcon.svg"
+                    alt="Ícone de menu hamburguer"
+                >
+                </img>
+                }
+            </button>
+            {menu === 'opened' && (
+            <ul 
+                className="absolute w-24 top-12 right-4 bg-white border shadow-md text-menu-hamburguer flex flex-col h-auto z-50"
+            >
+                <NavLink 
+                    className="block h-full" 
+                    to="/"
+                >
+                    <li 
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                    >
+                        HOME
+                    </li>
+                </NavLink>
+
+                <NavLink 
+                    className="block h-full" 
+                    to="/sobre"
+                >
+                    <li 
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                    >
+                        SOBRE
+                    </li>
+                </NavLink>
+
+                <NavLink 
+                    className="block h-full" 
+                    to="/login">
+                    <li 
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                    >
+                        LOGIN
+                    </li>
+                </NavLink>
+            </ul>
+            )}
+        </>
     )
 }
 

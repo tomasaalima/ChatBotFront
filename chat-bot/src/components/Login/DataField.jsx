@@ -7,7 +7,7 @@ function DataField(props) {
 
   return(
     <div
-      className="flex flex-row gap-3 text-center justify-center items-center"
+      className="flex flex-row gap-3 text-center justify-center items-center pb-1"
     >
       <label
         className="text-login-label font-bold"
