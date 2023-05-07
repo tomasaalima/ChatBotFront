@@ -29,10 +29,9 @@ function Edital(){
                                     </h1>
                                 </nav>
                             </div>
-                            <div className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-white ">
+                            <div className="h-full w-full bg-white sm:flex sm:flex-col sm:items-center md:grid md:grid-cols-2 gap-x-4 text-white">
                                 <FrameEdital src="/img/Download-Icon.svg" alt="Icon Download" document="Permanencia 2023.1"></FrameEdital>
                                 <FrameEdital src="/img/Download-Icon.svg" alt="Icon Download" document="Moradia 2023.1"></FrameEdital>
-
                             </div>
                         </div>
                     </div>

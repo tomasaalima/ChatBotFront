@@ -31,7 +31,8 @@ function VidAndImage(){
                             </NavLink>
                         </nav>
 
-                        <div className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-black">
+                        <div className="h-full w-full bg-white sm:flex sm:flex-col sm:items-center md:grid md:grid-cols-2 gap-x-4 text-black">
+                            <Video link="https://www.youtube.com/embed/H2bKVI7eS4s"></Video>
                             <Video link="https://www.youtube.com/embed/H2bKVI7eS4s"></Video>
                            
                             
