@@ -2,8 +2,7 @@ import React from "react";
 
 
 function FrameEdital(props){
-    const { src } = props;
-    const { alt } = props;
+
     const { document } = props;
 
     return(

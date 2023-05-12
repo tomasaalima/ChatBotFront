@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from 'react';
+import Popup from './Popup';
 
 
 
 function ManagementManuals(props){
     const { document } = props;
+
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleButtonClick = () => {
+        setShowPopup(true);
+    };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+    };
 
     return(
         <div className="h-40 w-5/6 m-auto flex items-center justify-center"> 
@@ -41,14 +52,15 @@ function ManagementManuals(props){
                  /> */}
                     Remover
                 </button>
-                <button className="w-full bg-footer bottom-0 font-exo2 text-white">
-                {/* <img
-                    src={`/img/admin/pencil-icon.png`}
-                    alt="cauda do balão"
-                    className="w-1/4 h-1/2 z-0"
-                 /> */}
+                <button 
+                    className="w-full bg-footer bottom-0 font-exo2 text-white"
+                    onClick={handleButtonClick}>
+                 
                     Editar
                 </button>
+
+                {showPopup && <Popup onClose={handleClosePopup} />}
+               
                 
             </div>
         </span>

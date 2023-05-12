@@ -12,6 +12,10 @@ import Recover from './pages/Recover';
 import Edital from './pages/Edital';
 import VidAndImage from './pages/VidAndImage';
 
+// Telas de Adminn
+
+import AManuals from './pages/admin/AManuals';
+
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
@@ -62,6 +66,10 @@ const router = createBrowserRouter([
         {
           path: "/home/starts",
           element: <VidAndImage/>
+        },
+        {
+          path: "/admin/manuals",
+          element: <AManuals/>
         }
     ]
   }

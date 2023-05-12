@@ -2,7 +2,6 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
 import { useState } from "react";
-import PageManuais from "../components/PageManuais";
 import Video from "../components/Video";
 import FrameEdital from "../components/FrameEdital";
 
