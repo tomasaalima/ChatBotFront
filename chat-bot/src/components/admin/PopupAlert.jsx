@@ -1,7 +1,7 @@
 
 import ReactModal from 'react-modal';
 
-const Modal = ({ isOpen, onClose }) => {
+const PopupAlert = ({ isOpen, onClose }) => {
   return (
     <ReactModal
       isOpen={isOpen}
@@ -53,7 +53,7 @@ const Modal = ({ isOpen, onClose }) => {
   );
 };
 
-export default Modal;
+export default PopupAlert;
 
 
 

@@ -15,21 +15,9 @@ import VidAndImage from './pages/VidAndImage';
 // Telas de Adminn
 
 import AManuals from './pages/admin/AManuals';
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Home/>
-//   },
-//   {
-//     path: "/sobre",
-//     element: <Sobre/>
-//   },
-//   {
-//     path: "/tutorial",
-//     element: <Tutorial/>
-//   },
-// ]);
+import AHome from './pages/admin/AHome';
+import AEditals from './pages/admin/AEditals';
+import AVideos from './pages/admin/AVideos';
 
 const router = createBrowserRouter([
   {
@@ -70,7 +58,19 @@ const router = createBrowserRouter([
         {
           path: "/admin/manuals",
           element: <AManuals/>
-        }
+        },
+        {
+          path: "/admin/",
+          element: <AHome/>
+        },
+        {
+          path: "/admin/edicts",
+          element: <AEditals/>
+        },
+        {
+          path: "/admin/videos",
+          element: <AVideos/>
+        },
     ]
   }
 ]);

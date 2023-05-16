@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
-import Modal from './Popup';
-
-
+import PopupAlert from './PopupAlert';
+import PopupEdit from './PopupEdit';
 
 function ManagementManuals(props){
     const { document } = props;
 
-    const [modalOpen, setModalOpen] = useState(false);
 
+    //PopUp Alert
+    const [modalOpen, setModalOpen] = useState(false);
     const handleOpenModal = () => {
       setModalOpen(true);
     };
-  
     const handleCloseModal = () => {
       setModalOpen(false);
     };
 
+    //PopUp Edit
+
+    const [editOpen, setEditOpen] = useState(false);
+    const abrirEdit = () => {
+        setEditOpen(true);
+    }
+    const fecharEdit = () => {
+        setEditOpen(false);
+    }
+
     return(
-        <div className="h-40 w-5/6 m-auto flex items-center justify-center"> 
-        <span className="editalhover w-3/4 h-4/6">
+        <div className="h-40 w-full m-auto flex items-center justify-center"> 
+        <span className="editalhover w-4/5 h-4/6">
             <div className="bg-green-400 h-5/6 flex items-center justify-center">
                 <div>
                     <img src="/img/Pdf-Icon.svg" alt="Icon PDF"
@@ -54,12 +63,14 @@ function ManagementManuals(props){
                  /> */}
                     Remover
                 </button>
-                <button 
+                <button
+                    onClick={abrirEdit} 
                     className="w-full bg-footer bottom-0 font-exo2 text-white">                 
                     Editar
                 </button>
 
-                <Modal isOpen={modalOpen} onClose={handleCloseModal} />
+                <PopupAlert isOpen={modalOpen} onClose={handleCloseModal} />
+                <PopupEdit isOpen={editOpen} onClose={fecharEdit} />
                
                 
             </div>
