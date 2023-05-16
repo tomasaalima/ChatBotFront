@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import Popup from './Popup';
+import Modal from './Popup';
 
 
 
 function ManagementManuals(props){
     const { document } = props;
 
-    const [showPopup, setShowPopup] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
-    const handleButtonClick = () => {
-        setShowPopup(true);
+    const handleOpenModal = () => {
+      setModalOpen(true);
     };
-
-    const handleClosePopup = () => {
-        setShowPopup(false);
+  
+    const handleCloseModal = () => {
+      setModalOpen(false);
     };
 
     return(
@@ -44,8 +44,10 @@ function ManagementManuals(props){
 
             </div>
             <div className="flex flex-row h-8">
-                <button className="w-full bg-redfooter bottom-0 font-exo2 text-white">
-                {/* <img
+                <button className="w-full bg-redfooter bottom-0 font-exo2 text-white"
+                onClick={handleOpenModal}>
+
+                 {/* <img
                     src={`/img/admin/trash-icon.png`}
                     alt="cauda do balão"
                     className="w-1/4 h-1/2 z-0"
@@ -53,13 +55,11 @@ function ManagementManuals(props){
                     Remover
                 </button>
                 <button 
-                    className="w-full bg-footer bottom-0 font-exo2 text-white"
-                    onClick={handleButtonClick}>
-                 
+                    className="w-full bg-footer bottom-0 font-exo2 text-white">                 
                     Editar
                 </button>
 
-                {showPopup && <Popup onClose={handleClosePopup} />}
+                <Modal isOpen={modalOpen} onClose={handleCloseModal} />
                
                 
             </div>
