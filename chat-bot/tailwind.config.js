@@ -27,6 +27,8 @@ module.exports = {
         'login-label': '#187236',
         'buttom': '#3A9E5C',
         'redfooter': '#ff0000',
+        'menu': '#0f5fff',
+        'menu-hamburguer': '#35834F',
       },
       spacing: {
         '3/10': '30%',
