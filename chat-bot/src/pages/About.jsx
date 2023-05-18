@@ -25,8 +25,16 @@ function About(){
                     <div 
                         className="flex flex-row gap-20 w-full items-center justify-center mt-28"
                     >
-                        <Frame src="/img/icon-document.png" alt="Descrição da imagem" className="w-20 object-cover" tittle="titulo"/>
-                        <Frame src="/img/icon-document.png" alt="Descrição da imagem" className="w-20 object-cover" tittle="titulo"/>
+                        <Frame 
+                            src="/img/icon-document.png" 
+                            alt="Descrição da imagem" 
+                            className="w-20 object-cover" 
+                            tittle="titulo"/>
+                        <Frame 
+                            src="/img/icon-document.png" 
+                            alt="Descrição da imagem" 
+                            className="w-20 object-cover" 
+                            tittle="titulo"/>
                     </div>
                 </div>
             </div>

@@ -27,11 +27,15 @@ function Recover() {
           />
         </div>
           <p
-          className="mb-4 text-sm text-red-500"
+            className="mb-4 text-sm text-red-500"
           >
             Por favor, nos informe o seu email de acesso para que possamos recuperar sua senha
           </p>
-          <DataField label="Email" type="email" holder="Digite seu email"/>
+          <DataField 
+            label="Email" 
+            type="email" 
+            holder="Digite seu email"
+          />
         </form>
         <input
           className="bg-buttom text-white mt-4 cursor-pointer
