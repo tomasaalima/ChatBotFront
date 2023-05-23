@@ -38,6 +38,7 @@ module.exports = {
         'middle-login': '37.5%',
         '22': '88px',
         '68c': '68%',
+        '95p': '90%'
       },
       fontFamily: {
         'exo2': ['Almarai', 'Antic Didone', 'sans-serif'],
