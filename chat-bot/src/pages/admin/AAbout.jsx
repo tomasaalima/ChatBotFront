@@ -1,14 +1,15 @@
 import React from "react";
-import Background from '../components/Background';
-import NavBar from "../components/NavBar";
-import MakeLogin from "../components/MakeLogin";
+import Background from "../../components/Background";
+import Exit from "../../components/admin/Exit";
+import AMenu from "../../components/admin/AMenu";
 
-function About(){
+function AAbout(){
     return (
         <>
-            <NavBar/>
+            <AMenu/>
             <Background/>
-            <MakeLogin/>
+            <Exit/>
+
             <div 
                 className="absolute top-20 text-white flex justify-center w-full h-5/6"
             >
@@ -18,10 +19,10 @@ function About(){
                     <h1 
                         className="font-oswald text-2xl mt-6"
                     >
-                        Tire dúvidas com nosso assistente a qualquer hora!
+                        Tela de SOBRE do admin!
                     </h1>
                     <div 
-                        className="flex flex-col w-11/12 h-4/6 items-center justify-center mt-28 drop-shadow-lg"
+                        className="flex flex-col w-11/12 h-4/6 items-center justify-center mt-20 drop-shadow-lg"
                     >
                         <div 
                             className="w-full flex justify-center h-11 items-center  bg-white"
@@ -48,4 +49,4 @@ function About(){
 )
 }
 
-export default About;
+export default AAbout;

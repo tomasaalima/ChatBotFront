@@ -18,6 +18,7 @@ import AManuals from './pages/admin/AManuals';
 import AHome from './pages/admin/AHome';
 import AEditals from './pages/admin/AEditals';
 import AVideos from './pages/admin/AVideos';
+import AAbout from './pages/admin/AAbout';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
           path: "/admin/videos",
           element: <AVideos/>
         },
+        {
+          path: "/admin/about",
+          element: <AAbout/>
+        }
     ]
   }
 ]);
