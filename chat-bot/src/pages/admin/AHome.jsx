@@ -4,6 +4,7 @@ import Exit from "./../../components/admin/Exit";
 import AMenu from "../../components/admin/AMenu";
 import Background from "./../../components/Background"
 import FrameAdmin from "../../components/admin/FrameAdmin";
+import SessionProtect from "../../components/Login/SessionProtect";
 import FrameUpload from "../../components/admin/FrameUpload";
 
 
@@ -19,6 +20,7 @@ function AHome(){
     return (
         
         <>
+        <SessionProtect/>
         <AMenu/>
         <Background/>
         <Exit/>

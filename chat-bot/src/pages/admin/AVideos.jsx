@@ -3,13 +3,14 @@ import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
 import VideoAdmin from "../../components/admin/VideoAdmin";
+import SessionProtect from "../../components/Login/SessionProtect";
 
 
 function AVideos(){
 
     return (
-        
         <>
+        <SessionProtect/>
         <AMenu/>
         <Background/>
         <Exit/>

@@ -6,7 +6,7 @@ function TextBox(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setValor("");
-    props.setUserMSG({'type':'user', 'text': valor});
+    props.setUserMSG({text: valor});
   }
 
   const handleChange = (event) => {

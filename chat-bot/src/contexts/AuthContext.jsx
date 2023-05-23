@@ -5,7 +5,6 @@ import axios from "axios";
 const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
-  const [ user, setUser ] = useState({});
   const [ token, setToken ] = useState({});
   const [ credentials, setCredentials ] = useState({});
 
@@ -20,7 +19,7 @@ function AuthProvider({ children }) {
   }, [credentials]);
 
   return (
-    <AuthContext.Provider value={{user, token, setCredentials}}>
+    <AuthContext.Provider value={{token, credentials, setCredentials}}>
       {children}
     </AuthContext.Provider>
   );

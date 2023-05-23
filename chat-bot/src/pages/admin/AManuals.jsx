@@ -3,12 +3,14 @@ import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
 import ManagementManuals from "../../components/admin/ManagementManuals";
+import SessionProtect from "../../components/Login/SessionProtect";
 
 function AManuals(){
 
     return (
         
         <>
+        <SessionProtect/>
         <AMenu/>
         <Background/>
         <Exit/>
