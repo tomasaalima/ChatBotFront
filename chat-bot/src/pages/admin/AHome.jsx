@@ -4,6 +4,7 @@ import Exit from "./../../components/admin/Exit";
 import NavBar from "./../../components/NavBar";
 import Background from "./../../components/Background"
 import FrameAdmin from "../../components/admin/FrameAdmin";
+import SessionProtect from "../../components/Login/SessionProtect";
 
 
 
@@ -18,6 +19,7 @@ function AHome(){
     return (
         
         <>
+        <SessionProtect/>
         <NavBar/>
         <Background/>
         <Exit/>

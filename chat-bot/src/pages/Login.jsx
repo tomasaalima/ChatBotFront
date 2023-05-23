@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import DataField from "../components/Login/DataField";
 import ReturnButton from "../components/ReturnButton";
 import { AuthContext } from "../contexts/AuthContext";
@@ -10,12 +11,9 @@ function Login() {
   const [ warning, setWarning ] = useState('');
 
   const { mail, passwd } = useContext(FieldContext);
+  const { token, setCredentials } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const { token, setCredentials } = useContext(AuthContext);
-  //setCredentials({"email": "lea.considine@example.com","password": "password"});
-
-  //console.log(token);
 
   useEffect(() => {
     if (mail !== '' && passwd !== '' && click) {

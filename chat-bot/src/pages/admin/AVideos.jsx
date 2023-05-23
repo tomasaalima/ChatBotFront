@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
 import VideoAdmin from "../../components/admin/VideoAdmin";
+import SessionProtect from "../../components/Login/SessionProtect";
 
 
 function AVideos(){
@@ -10,6 +11,7 @@ function AVideos(){
     return (
         
         <>
+        <SessionProtect/>
         <NavBar/>
         <Background/>
         <Exit/>

@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 function MakeLogin(){
+    const { token } = useContext(AuthContext);
+
     return(
-        <NavLink
-            to="/login"
-        >
-            <button className="h-10 bg-green-600 flex items-center justify-center fixed text-white top-3 right-4 w-32 font-exo2 rounded-sm hover:bg-green-500
-            mobile:hidden
-            desktop:flex
-            ">
-                Fazer login
-            </button>
-        </NavLink>
+        (!token.access_token &&
+            <NavLink
+                to="/login"
+            >
+                <button className="h-10 bg-green-600 flex items-center justify-center fixed text-white top-3 right-4 w-32 font-exo2 rounded-sm hover:bg-green-500
+                mobile:hidden
+                desktop:flex
+                ">
+                    Fazer login
+                </button>
+            </NavLink>
+            )
     )
 }
 

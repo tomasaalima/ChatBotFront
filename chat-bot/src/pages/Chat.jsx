@@ -14,11 +14,9 @@ import NavBar from "../components/NavBar";
 function Chat () {
   const [ conversation, setConversation ] = useState([]);
   const [ userMSG, setUserMSG ] = useState({'type': '', 'text': ''});
-  const [ subject, setSubject ] = useState({'theme': '', 'length': 2});
   const [ selection, setSelection ] =useState({'text': '', 'counter': 0});
   const [ validation, setValidation ] =useState({'result': ''});
   const [ hello, setHello ] = useState([]);
-  const [ ReadyToSearch, setReadyToSearch ] = useState(false);
   const [ search, setSearch ] = useState('');
   const [ questions, setQuestions ] = useState([]);
 
@@ -37,8 +35,6 @@ function Chat () {
   useEffect(() => {
     if (userMSG.type !== '') {
       setConversation([...conversation, dialogueGen(userMSG.type, userMSG.text)]);
-    }
-    if (ReadyToSearch === true) {
       setSearch(userMSG.text);
     }
   }, [userMSG]);
@@ -46,7 +42,7 @@ function Chat () {
   //Consultar perguntas respectivas às palavras chave
   useEffect(() => {
     if (search) {
-      axios.get('http://localhost:8000/api/keywords/'+subject.theme+'/'+userMSG.text+'')
+      axios.get('http://localhost:8000/api/keywords/'+userMSG.text)
     .then(response => {
       if (response.data.length === 0) {
         setConversation([...conversation, dialogueGen("robot", "Acabei não encontrando nada relacionado a sua descrição. Poderia dar mais informações?")]);
@@ -58,40 +54,10 @@ function Chat () {
   }
   }, [search]);
 
-  //Tratamento de definição do tema das perguntas 
+  //Auto-Scroll
   useEffect(() => {
-    if (conversation.length === subject.length) {
-      switch(userMSG.text) {
-        case '1' : {
-          setSubject({'theme': 'fluxo', 'length': subject.length});
-          break;
-        }
-        case '2' : {
-          setSubject({'theme': 'edital', 'length': subject.length});
-          break;
-        }
-        case '3' : {
-          setSubject({'theme': 'documentação', 'length': subject.length});
-          break;
-        }
-        default: {
-          setConversation([...conversation, dialogueGen("robot", "Digite: </br><strong>1</strong> para falar sobre <strong>Fluxo</strong> </br><strong>2</strong> para falar sobre <strong>Editais</strong> </br><strong>3</strong> para falar sobre <strong>Documentação</strong>")]);
-          setSubject({'theme': '', 'length': subject.length + 2});
-          break;
-      }
-      }
-    }
     scrollToBottom();
   }, [conversation]);
-  
-  //Tratamento de inicio de conversa aberta
-  useEffect(() => {
-    if (subject.theme !== '') {
-      setConversation([...conversation, dialogueGen('robot', 'Descreva de maneira breve o problema que está enfrentando')])
-      setReadyToSearch(true);
-      setValidation({'result': ''});
-    }
-  }, [subject.theme]);
 
   //Exibição das perguntas
   useEffect(() => {
@@ -126,7 +92,7 @@ function Chat () {
       setConversation([...conversation, dialogueGen("robot", "Fico em feliz em ter ajudado!")]);
     } else if (validation.result === 'no'){
       setDefaultProps();
-      setConversation([...conversation, dialogueGen("robot", "Digite: </br>'1' para falar sobre 'fluxo' </br>'2' para falar sobre 'editais' </br>'3' para falar sobre 'Documentação'")]);
+      setConversation([...conversation, dialogueGen("robot", "Fale um pouco mais sobre seu problema para que eu possa te ajudar melhor..")]);
     }
   }, [validation.result]);
 
@@ -162,12 +128,10 @@ function Chat () {
 
   //Resetar propriedades
   const setDefaultProps = () => {
-    setSubject({'theme': '', 'length': conversation.length + 2});
     setSearch(''); 
     setHello([]); 
     setQuestions([]);
     setSelection({'text': '', 'counter': 0});
-    setReadyToSearch(false);
   }
 
   //Ir para o final do container que possui scroll
