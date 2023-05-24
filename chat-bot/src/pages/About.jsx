@@ -39,7 +39,19 @@ function About(){
                         <div 
                             className="h-full w-full bg-white text-black flex justify-center items-center "
                         >
-                        <div className="w-11/12 h-5/6 text-justify text-lg text-green-800">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
+                        <div className="w-11/12 h-5/6 text-justify text-lg text-green-800 flex flex-col gap-5">
+                        <p>
+                        O sistema é uma ferramenta criada para auxiliar no processo de inscrição no programa de Manutenção Acadêmica disponibilizado pelo IFPE-Campus Belo Jardim. Nele é possível acessar aos editais divulgados, aos tutoriais disponíveis e conversar com assistente virtual, que tira dúvidas e facilita o entendimento do usuário. A abordagem do ChatBot Manu, como é chamado o assistente virtual, é voltada para a comunicação informal, com intuito de cativar o usuário e facilitar na hora tirar suas dúvidas.
+                        </p>
+                        
+                        <p>
+                        O objetivo do sistema é possibilitar a centralização de informações de forma intuitiva, através de uma análise prévia das principais dúvidas que os discentes possuem no ato de inscrição no programa de Manutenção Acadêmica no portal Fluxo - IFPE.
+                        </p>
+                        
+                        <p>
+                        Desenvolvido pelos discentes do 5° Período de Engenharia de Software do Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco - Campus Belo Jardim.
+                        </p>
+                        </div>
                         </div>
                     </div>
                 </div>

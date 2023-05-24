@@ -8,8 +8,17 @@ module.exports = {
       'mobile': '425px', // tela pequena
       'desktop': '1024px', // tela grande
     },
+    minWidth: {
+      'login': '380px',
+    },
     minHeight: {
-      '10': '40px',
+      'login': '440px',
+    },
+    maxWidth: {
+      'login': '380px',
+    },
+    maxHeight: {
+      'login': '440px',
     },
     extend: {
       backgroundImage: {

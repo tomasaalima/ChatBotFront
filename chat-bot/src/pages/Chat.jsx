@@ -33,8 +33,8 @@ function Chat () {
 
   //Captar mensagem do usuário
   useEffect(() => {
-    if (userMSG.type !== '') {
-      setConversation([...conversation, dialogueGen(userMSG.type, userMSG.text)]);
+    if (userMSG.text !== '') {
+      setConversation([...conversation, dialogueGen('user', userMSG.text)]);
       setSearch(userMSG.text);
     }
   }, [userMSG]);
@@ -92,7 +92,7 @@ function Chat () {
       setConversation([...conversation, dialogueGen("robot", "Fico em feliz em ter ajudado!")]);
     } else if (validation.result === 'no'){
       setDefaultProps();
-      setConversation([...conversation, dialogueGen("robot", "Fale um pouco mais sobre seu problema para que eu possa te ajudar melhor..")]);
+      setConversation([...conversation, dialogueGen("robot", "Fale um pouco mais sobre seu problema, assim posso te ajudar melhor..")]);
     }
   }, [validation.result]);
 
