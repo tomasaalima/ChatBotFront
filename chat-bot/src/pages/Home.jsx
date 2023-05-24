@@ -12,7 +12,7 @@ function Home(){
             <NavBar/>
             <Background/>
             <div 
-                className="absolute  text-white flex justify-center w-full h-4/6
+                className="absolute text-white flex justify-center w-full h-4/6
                 desktop:top-1/4
                 mobile:top-1/2
                 "

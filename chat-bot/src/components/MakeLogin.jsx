@@ -6,7 +6,7 @@ function MakeLogin(){
     const { token } = useContext(AuthContext);
 
     return(
-        (!token.access_token &&
+        (!token.access_token || token.access_token === 'denied' &&
             <NavLink
                 to="/login"
             >

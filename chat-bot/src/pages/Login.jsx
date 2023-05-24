@@ -11,7 +11,7 @@ function Login() {
   const [ warning, setWarning ] = useState('');
 
   const { mail, passwd } = useContext(FieldContext);
-  const { token, setCredentials } = useContext(AuthContext);
+  const { token, setCredentials, credentials } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -28,8 +28,10 @@ function Login() {
 
   useEffect(() => {
     if (token.access_token){
-      if (token.access_token === 'denied') setWarning("Email ou Senha incorretos");
-      else navigate('/admin/');
+      if (credentials.email !== 'logout') {
+        if (token.access_token === 'denied') setWarning("Email ou Senha incorretos");
+        else navigate('/admin/');
+      }
     }
   }, [token]);
 

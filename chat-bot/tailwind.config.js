@@ -39,6 +39,7 @@ module.exports = {
         '22': '88px',
         '45c': '45%',
         '68c': '68%',
+        '90c': '90%',
       },
       fontFamily: {
         'exo2': ['Almarai', 'Antic Didone', 'sans-serif'],
