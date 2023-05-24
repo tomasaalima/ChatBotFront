@@ -58,14 +58,14 @@ function NavBar(){
             </button>
             {menu === 'opened' && (
             <ul 
-                className="absolute w-24 top-12 right-4 bg-white border shadow-md text-menu-hamburguer flex flex-col h-auto z-50"
+                className="absolute w-24 top-12 right-4 bg-white border shadow-md text-menu-hamburguer flex flex-col h-auto z-50 desktop:hidden"
             >
                 <NavLink 
                     className="block h-full" 
                     to="/"
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer border-b"
                     >
                         HOME
                     </li>
@@ -76,7 +76,7 @@ function NavBar(){
                     to="/sobre"
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer border-b"
                     >
                         SOBRE
                     </li>

@@ -12,19 +12,28 @@ function Home(){
             <NavBar/>
             <Background/>
             <div 
-                className="absolute top-28 text-white flex justify-center w-full h-4/6"
+                className="absolute  text-white flex justify-center w-full h-4/6
+                desktop:top-1/4
+                mobile:top-1/2
+                "
             >
                 <MakeLogin/>
                     <div 
                         className=" flex flex-col justify-center items-center w-9/12"
                     >
                         <h1 
-                            className="-mt-9 font-oswald text-2xl"
+                            className="-mt-9 font-oswald 
+                            desktop:text-2xl
+                            mobile:text-mobiletxt
+                            "
                         >
                             Tire duvidas com nosso assistente a qualquer hora!
                         </h1>
                         <div 
-                            className="flex flex-row gap-20 w-full items-center justify-center mt-28 "
+                            className="flex flex-row gap-20 w-full items-center justify-center mt-28 pb-1/5
+                            mobile:flex-col 
+                            desktop:flex-row
+                            "
                         >
                             <Frame 
                                 src="/img/icon-fluxo.png"  
@@ -49,7 +58,7 @@ function Home(){
                             />
                         </div>
                     </div>
-                </div>
+            </div>
         </>
     )
 }
