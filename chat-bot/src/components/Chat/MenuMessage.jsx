@@ -44,7 +44,7 @@ function MenuMessage(props) {
             data-testid="paragraph"
             className="pl-1"
           >
-          Algum desses tópicos diz algo sobre sua dúvida? ( Você pode clicar em algum deles para receber a resposta logo abaixo )
+          Algum desses tópicos diz algo sobre sua dúvida? ( Você pode clicar em qualquer um deles para receber a resposta logo abaixo )
           </p>
           {answers}
       </MenuBallon>
