@@ -23,6 +23,7 @@ function Login() {
       setWarning("revise os campos")
       setClick(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [click]);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ function Login() {
         else navigate('/admin/');
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
   
   return(

@@ -8,7 +8,7 @@ function FrameEdital(props){
         <div 
             className="h-40 m-auto flex items-center justify-center
             mobile:w-90c
-            desktop:w-3/4
+            desktop:w-4/5
             "
         > 
         <span 

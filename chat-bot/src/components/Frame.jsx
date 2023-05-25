@@ -38,14 +38,6 @@ function Frame(props) {
           </div>
           <p className="phover bg-footer">Acessar</p>
         </button>
-        <button
-          className="w-56 h-10 text-white font-normal bg-buttom
-          mobile:block
-          desktop:hidden
-          "
-        >
-        Acessar
-        </button>
       </div>
     </NavLink>
   );

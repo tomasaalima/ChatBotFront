@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
@@ -7,56 +7,66 @@ import SessionProtect from "../../components/Login/SessionProtect";
 
 
 function AVideos(){
+    const [ docs, setDocs ] = useState([
+        <VideoAdmin link="https://www.youtube.com/embed/qUjRTg0U0Qs"></VideoAdmin>,
+        <VideoAdmin link="https://www.youtube.com/embed/in24OC-inBc"></VideoAdmin>,
+        <VideoAdmin link="https://www.youtube.com/embed/qUjRTg0U0Qs"></VideoAdmin>,
+        <VideoAdmin link="https://www.youtube.com/embed/in24OC-inBc"></VideoAdmin>,
+        <VideoAdmin link="https://www.youtube.com/embed/qUjRTg0U0Qs"></VideoAdmin>,
+        <VideoAdmin link="https://www.youtube.com/embed/in24OC-inBc"></VideoAdmin>,
+        <VideoAdmin link="https://www.youtube.com/embed/qUjRTg0U0Qs"></VideoAdmin>,
+        <VideoAdmin link="https://www.youtube.com/embed/in24OC-inBc"></VideoAdmin>,
+    ])
 
     return (
         <>
             <SessionProtect/>
-            <NavBar/>
+            <AMenu/>
             <Background/>
             <Exit/>
-            <div 
-                className="absolute top-20 text-white flex justify-center w-full h-5/6"
+            <div //Screen
+                className="absolute text-white flex flex-col justify-center items-center w-screen top-20"
             >
-                        <div 
-                            className=" flex flex-col justify-center items-center w-8/12"
+                <div //Título da página
+                    className="w-full text-center mb-32"
+                >
+                    <h1 
+                        className="font-oswald text-2xl mt-6"
+                    >
+                        Olá Administrador(a), seja Bem-Vindo(a)!
+                    </h1>
+                </div>
+
+                <div //Container do painel central
+                    className="w-full flex items-start justify-center"
+                >
+                    <div //Painel central
+                        className="h-8/12 bg-white flex flex-col shadow-2xl justify-center items-center
+                        mobile:w-11/12
+                        desktop:w-10/12
+                        "
+                    >
+                        <h1 //Cabeçalho do painel
+                            className="w-11/12 flex justify-center h-11 items-center font-robot text-footer border-b-2 border-b-green-600"
                         >
-                            <h1 
-                                className="font-oswald text-2xl mt-6"
+                            Vídeos
+                        </h1>
+                        <div //Documentos
+                            className={`w-full grid min-h-centralPanel
+                            desktop:overflow-auto desktop:max-h-centralPanel
+                            mobile:max-h-none mobile:pb-16
+
+                            ${docs.length > 0 ? 'mobile:grid-cols-1 desktop:grid-cols-2' : 'text-center flex justify-center'}`}
+                        >                            
+                            {docs.length > 0 ? docs : 
+                            <p 
+                                className="pt-5 text-letter"
                             >
-                                Olá Administrador(a), seja Bem-Vindo(a)!
-                            </h1>
-                            <div 
-                                className="flex flex-col w-11/12 h-4/6 items-center justify-center mt-28 drop-shadow-lg"
-                            >
-                                <div 
-                                    className="w-full flex justify-center h-11 items-center  bg-white"
-                                >
-                                    <nav 
-                                        className="w-11/12 flex justify-center h-11 items-center font-roboto text-footer border-b-2 border-b-green-600"
-                                    >
-                                        <h1
-                                            className="flex items-center justify-center font-roboto h-10 text-2xl "
-                                        >
-                                            Vídeos
-                                        </h1>
-                                    </nav>
-                                </div>
-                                <div 
-                                    className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-white "
-                                >                                   
-                                    <VideoAdmin 
-                                        link="https://www.youtube.com/watch?v=qUjRTg0U0Qs" 
-                                        description="video 1"
-                                    >
-                                    </VideoAdmin>
-                                    <VideoAdmin 
-                                        link="https://www.youtube.com/watch?v=in24OC-inBc" 
-                                        description="video 2"
-                                    >
-                                    </VideoAdmin>
-                                </div>
-                            </div>
+                                Nenhum vídeo disponível no momento
+                            </p>}
                         </div>
+                    </div>
+                </div>
             </div>
         </>
     )

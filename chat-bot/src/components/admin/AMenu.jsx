@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function AMenu(){
     const [ menu, setMenu ] = useState('closed');
+    const { token, setCredentials } = useContext(AuthContext);
+
 
     return (
         <>
@@ -13,7 +16,6 @@ function AMenu(){
             "
             >
                 <NavLink 
-            
                 activeClassName="active"
                 to="/admin/"           
                 className="w-32 h-8 flex items-center justify-center text-white" 
@@ -58,11 +60,14 @@ function AMenu(){
             </button>
             {menu === 'opened' && (
             <ul 
-                className="absolute w-24 top-12 right-4 bg-white border shadow-md text-menu-hamburguer flex flex-col h-auto z-50"
+                className="absolute w-24 top-12 right-4 bg-white border shadow-md text-menu-hamburguer flex flex-col h-auto z-50
+                mobile:block
+                desktop:hidden
+                "
             >
                 <NavLink 
                     className="block h-full" 
-                    to="/"
+                    to="/admin/"
                 >
                     <li 
                         className="p-2 text-center hover:bg-gray-200 cursor-pointer"
@@ -73,7 +78,7 @@ function AMenu(){
 
                 <NavLink 
                     className="block h-full" 
-                    to="/sobre"
+                    to="/admin/about"
                 >
                     <li 
                         className="p-2 text-center hover:bg-gray-200 cursor-pointer"
@@ -84,7 +89,9 @@ function AMenu(){
 
                 <NavLink 
                     className="block h-full" 
-                    to="/">
+                    to={!token.access_token || token.access_token === 'denied' ? '/login' : '/'}
+                    onClick={() => setCredentials({"email": 'logout',"password": 'logout'})}
+                >
                     <li 
                         className="p-2 text-center hover:bg-gray-200 cursor-pointer"
                     >

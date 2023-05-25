@@ -37,30 +37,45 @@ function VideoAdmin(props) {
 
   return (
     <div
-      className="relative h-5/6 m-auto"
+      className="relative h-full w-4/5 m-auto pb-5 pt-5"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <iframe
+        className="h-full w-full"
         src={`${link}`}
-        title="YouTube video player"        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        title="YouTube video player"        
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-      ></iframe>
+      >
+      </iframe>
 
       {showButtons && (
-        <div className="buttons-wrapper">
-          <button className="bg-redfooter text-white  w-2/4 h-8 font-exo2"
-          onClick={handleOpenModal}
-          >Remover</button>
-          <button className="bg-footer text-white  w-2/4 h-8 font-exo2"
-           onClick={abrirEdit}
-          >Editar</button>
+        <div 
+          className="buttons-wrapper"
+        >
+          <button 
+            className="bg-redfooter text-white  w-2/4 h-8 font-exo2"
+            onClick={handleOpenModal}
+          >
+            Remover
+          </button>
+          <button 
+            className="bg-footer text-white  w-2/4 h-8 font-exo2"
+            onClick={abrirEdit}
+          >
+            Editar
+          </button>
         </div>
       )}
-      <PopupAlert isOpen={modalOpen} onClose={handleCloseModal} />
-      <PopupEdit isOpen={editOpen} onClose={fecharEdit} />
-
-
+      <PopupAlert 
+        isOpen={modalOpen} 
+        onClose={handleCloseModal} 
+      />
+      <PopupEdit 
+        isOpen={editOpen} 
+        onClose={fecharEdit} 
+      />
     </div>
   );
 }

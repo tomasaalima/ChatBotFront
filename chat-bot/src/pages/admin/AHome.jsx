@@ -10,7 +10,7 @@ import FrameUpload from "../../components/admin/FrameUpload";
 
 
 function AHome(){
-    const [activeTab, setActiveTab] = useState("tab1");
+    const [activeTab, setActiveTab] = useState("edit");
       
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
@@ -19,11 +19,14 @@ function AHome(){
     return (   
         <>
             <SessionProtect/>
-            <NavBar/>
+            <AMenu/>
             <Background/>
             <Exit/>
             <div
-                className="absolute top-20 text-white flex justify-center w-full h-5/6"
+                className="absolute text-white flex justify-center w-full h-5/6
+                mobile:top-96
+                desktop:top-20
+                "
             >
                     <div 
                         className=" flex flex-col justify-center items-center w-10/12"
@@ -34,15 +37,18 @@ function AHome(){
                             Olá Administrador(a), seja Bem-Vindo(a)!
                         </h1>
                         <div 
-                            className="flex flex-col w-10/12 h-4/6 items-center justify-center mt-16"
+                            className="flex flex-col items-center justify-center mt-16 drop-shadow-lg
+                            mobile:w-11/12 mobile:h-auto mobile:pb-20
+                            desktop:w-10/12 desktop:h-4/6
+                            "
                         >
                             <nav 
                                 className="w-full flex justify-center h-11 items-center top-3 divide-x-2 font-roboto bg-footer"
                             >
                                 <button  
-                                    onClick={() => handleTabClick("tab1")}
+                                    onClick={() => handleTabClick("edit")}
                                     className={
-                                        `${activeTab === "tab1" ?
+                                        `${activeTab === "edit" ?
                                         "bg-footer text-white" :
                                         "bg-slate-200 text-gray-800"} 
                                         flex items-center justify-center w-2/4 font-roboto h-10`
@@ -51,9 +57,9 @@ function AHome(){
                                     EDITAR MATERIAL
                                 </button>
                                 <button 
-                                    onClick={() => handleTabClick("tab2")}
+                                    onClick={() => handleTabClick("post")}
                                     className={
-                                        `${activeTab === "tab1" ?
+                                        `${activeTab === "post" ?
                                         "bg-footer text-white" :
                                         "bg-slate-200 text-gray-800"} 
                                         flex items-center justify-center w-2/4 font-roboto h-10`
@@ -63,14 +69,20 @@ function AHome(){
                                 </button>
                             </nav>
                             <div 
-                                className="h-full w-full  text-black bg-white"
+                                className="h-full w-full  text-black bg-white
+                                mobile:pt-20 mobile:pb-20
+                                desktop:pt-0 desktop:pb-0
+                                "
                             >
                             <div 
                                 className="h-full w-full"
                             >
-                                {activeTab === "tab1" && (
+                                {activeTab === "edit" && (
                                     <div 
-                                        className="h-full w-full flex gap-x-24 text-black justify-center items-center"
+                                        className="h-full w-full flex text-black justify-center items-center
+                                        mobile:flex-col mobile:gap-y-24
+                                        desktop:flex-row desktop:gap-x-24
+                                        "
                                     >
                                         <FrameAdmin 
                                             src="/img/admin/Manuais-icon.png" 
@@ -95,12 +107,33 @@ function AHome(){
                                         /> 
                                     </div>
                                 )}
-                                {activeTab === "tab2"&& (
-                                    <div 
-                                        className="h-full w-full grid grid-cols-3 gap-x-4 text-black"
-                                    >
-                                    </div>
-                                )}
+                                {activeTab === "post"&& (
+                                <div 
+                                    className="h-full w-full flex text-black justify-center items-center
+                                    mobile:flex-col mobile:gap-y-24
+                                    desktop:flex-row desktop:gap-x-24
+                                    "
+                                >
+                                    <FrameUpload 
+                                        src="/img/admin/Manuais-icon.png" 
+                                        alt="Redirecionamento manuais" 
+                                        className="w-28 object-cover" 
+                                        tittle="Manuais"
+                                    />
+                                    <FrameUpload 
+                                        src="/img/admin/icon-documentAdmin.png" 
+                                        alt="Redirecionamento edital" 
+                                        className="w-20 object-cover mt-2" 
+                                        tittle="Edital"
+                                    />
+                                    <FrameUpload 
+                                        src="/img/admin/video-icon.png" 
+                                        alt="Redirecionamento vídeos" 
+                                        className="w-28 object-cover" 
+                                        tittle="Vídeos"
+                                    />
+                                </div>
+                            )}
                             </div>
                             </div>
                         </div>

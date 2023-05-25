@@ -13,12 +13,14 @@ module.exports = {
     },
     minHeight: {
       'login': '440px',
+      'centralPanel': '500px',
     },
     maxWidth: {
       'login': '380px',
     },
     maxHeight: {
       'login': '440px',
+      'centralPanel': '500px',
     },
     extend: {
       backgroundImage: {
@@ -57,7 +59,7 @@ module.exports = {
         'error': ['Abel', 'sans-serif'],
       },
       fontSize: {
-        'mobiletxt': '0.8rem',
+        'mobiletxt': '1rem',
       },
     },
   },

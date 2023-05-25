@@ -6,7 +6,7 @@ function Video(props){
 
     return (
         <div 
-            className="h-5/6 w-5/6 m-auto flex items-center justify-center text-white flex-col"
+            className="h-96 w-full m-auto flex items-center justify-center text-white flex-col"
         >
             <iframe  
                 src={`${link}`} 
@@ -18,7 +18,7 @@ function Video(props){
             >   
             </iframe>
             <p 
-                className="text-center text-footer font-error text-lg font-medium mt-1"
+                className="text-center text-footer font-error text-lg font-bold mt-1"
             >
                 {description}
             </p>
