@@ -40,7 +40,7 @@ function Home(){
                                 alt="logo de inicio" 
                                 className="w-36 object-cover" 
                                 tittle="Comece por aqui" 
-                                to="/home/starts"                                
+                                to="/home/starts"                             
                             />
                             <Frame 
                                 src="/img/icon-document.png" 

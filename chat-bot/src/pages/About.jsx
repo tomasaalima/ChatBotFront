@@ -19,7 +19,7 @@ function About(){
                     <h1 
                         className="-mt-9  font-oswald text-2xl"
                     >
-                    SOBRE
+                        SOBRE
                     </h1>
 
                     <div 
@@ -29,12 +29,14 @@ function About(){
                             src="/img/icon-document.png" 
                             alt="Descrição da imagem" 
                             className="w-20 object-cover" 
-                            tittle="titulo"/>
+                            tittle="titulo"
+                        />
                         <Frame 
                             src="/img/icon-document.png" 
                             alt="Descrição da imagem" 
                             className="w-20 object-cover" 
-                            tittle="titulo"/>
+                            tittle="titulo"
+                        />
                     </div>
                 </div>
             </div>

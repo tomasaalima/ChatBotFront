@@ -7,14 +7,16 @@ import { FieldProvider } from './contexts/FieldContext';
 function App(){
 
   return(
-    <div className='h-screen w-full caret-transparent'>
-    <AuthProvider>
-    <FieldProvider>
-        <Outlet></Outlet>
-    </FieldProvider>
-    </AuthProvider>
-        <Footer/>
-      </div>
+    <div 
+      className='h-screen w-full caret-transparent'
+    >
+      <AuthProvider>
+        <FieldProvider>
+          <Outlet></Outlet>
+        </FieldProvider>
+      </AuthProvider>
+      <Footer/>
+    </div>
   )
 }
 

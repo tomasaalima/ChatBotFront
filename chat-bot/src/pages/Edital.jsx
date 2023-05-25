@@ -53,14 +53,29 @@ function Edital(){
                             desktop:grid desktop:overflow-auto
                             "
                         >
-                            <FrameEdital document="Permanencia 2023.1"></FrameEdital>
-                            <FrameEdital document="Moradia 2023.1"></FrameEdital>
-                            <FrameEdital document="Permanencia 2023.1"></FrameEdital>
-                            <FrameEdital document="Moradia 2023.1"></FrameEdital>
-                            <FrameEdital document="Permanencia 2023.1"></FrameEdital>
-                            <FrameEdital document="Moradia 2023.1"></FrameEdital>
-                            <FrameEdital document="Permanencia 2023.1"></FrameEdital>
-                            <FrameEdital document="Moradia 2023.1"></FrameEdital>
+                            <FrameEdital 
+                                document="Permanencia 2023.1"
+                            >
+                            </FrameEdital>
+                            <FrameEdital 
+                                document="Moradia 2023.1"
+                            >
+                            </FrameEdital>
+                            <FrameEdital 
+                                document="Permanencia 2023.1"
+                            >
+                            </FrameEdital>
+                            <FrameEdital 
+                                document="Moradia 2023.1"
+                            >
+                            </FrameEdital><FrameEdital 
+                                document="Permanencia 2023.1"
+                            >
+                            </FrameEdital>
+                            <FrameEdital 
+                                document="Moradia 2023.1"
+                            >
+                            </FrameEdital>
                         </div>
                     </div>
                 </div>
