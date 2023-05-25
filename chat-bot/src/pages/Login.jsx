@@ -1,7 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import DataField from "../components/Login/DataField";
 import ReturnButton from "../components/ReturnButton";
+import { FieldContext } from "../contexts/FieldContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 function Login() {
   const [ click, setClick ] = useState(false);
