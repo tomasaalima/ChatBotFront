@@ -2,7 +2,7 @@ import ReactModal from 'react-modal';
 import { useState } from 'react';
 
 
-const PopupEdit = ({ isOpen, onClose }) => {
+const PopUpUpload = ({ isOpen, onClose }) => {
 
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -38,7 +38,7 @@ const PopupEdit = ({ isOpen, onClose }) => {
           borderRadius: '4px',
           padding: '0px',
           maxWidth: '50vw',
-          maxHeight: '45vh',
+          maxHeight: '65vh',
           width: '100%',
           height: '100%',
           overflow: 'auto',
@@ -47,12 +47,13 @@ const PopupEdit = ({ isOpen, onClose }) => {
     >
 
       <div className='bg-green-600 w-full h-9 flex items-center justify-center text-white font-roboto font-bold text-lg'>
-        <h1>EDITE O MATERIAL</h1>
+        <h1>POSTE O MATERIAL</h1>
       </div>
+      <div className='flex items-center justify-center flex-col w-full h-95p text-lg'>
 
-      <div className='flex items-center justify-center flex-col w-full h-4/6 text-lg'>
-        <div className='w-full h-2/4 flex flex-row'>
-            <div className='w-3/12 h-full bg-white flex items-center justify-end '>
+
+       <div className='w-full h-3/10 flex flex-row'>
+            <div className='w-3/12 h-full flex items-center justify-end '>
                 Descrição:
             </div>
             <div className='flex items-center justify-center w-9/12 '>
@@ -62,11 +63,13 @@ const PopupEdit = ({ isOpen, onClose }) => {
                         onChange={handleChangeText}
                         className='h-5/6 w-11/12 border-2 border-gray-400 focus:outline-none focus:border-green-700 focus:ring-green-700 pl-2 pr-2'/>
                 </form>
-
             </div>
-        </div>
-        <div className='w-full h-2/4 flex flex-row'>
-            <div className='w-3/12 h-full bg-white flex items-center justify-end '>
+        </div> 
+
+
+
+        <div className='w-full h-2/6 flex flex-row'>
+            <div className='w-3/12 h-full flex items-center justify-end '>
                 Tipo de material:
             </div>
             <div className='flex items-center justify-start w-9/12 '>
@@ -93,21 +96,36 @@ const PopupEdit = ({ isOpen, onClose }) => {
                     <label className='pl-4'>Edital</label>
                 </form>
             </div>
+        </div>
+        <div className='w-full h-2/6 flex justify-center -mt-2'>
+            <div className=' w-4/5 h-5/6 bg-slate-100 flex flex-row items-center justify-center shadow-xl'>
+                <div>
+                    <img src='/img/admin/Upload-icon.png' alt='Upload' className='w-16 mr-6 mt-4'></img>
+                </div>
+                <div className='flex flex-col items-center'>
+                    <h3 className=' text-green-800 text-base mb-2'>Arraste e solte os arquivos até aqui ou</h3>
+                   <form>
+                        <input type="file" id="upload" class="file-upload" className='hidden' />
+                        <label for="upload" class="custom-file-upload" className='flex cursor-pointer bg-green-600 text-white rounded-sm h-8 w-48 justify-center items-center text-sm font-semibold hover:bg-green-500'>SELECIONE O ARQUIVO...</label>
+                   </form>
+                
+                </div>
+            </div>
+        </div>
+        <div className=' w-full h-8 flex justify-around font-roboto font-extrabold text-white mb-2'>
+            <button className='w-2/6 bg-redfooter h-7'
+            onClick={onClose}
+            >CANCELAR</button>
+            <button className='w-2/6 bg-footer h-7'
+            onClick={onClose}
+            >SALVAR</button>
 
         </div>
-      </div>
+      </div> 
 
-      <div className=' w-full h-1/6 flex justify-around font-roboto font-extrabold text-white pt-4'>
-        <button className='w-2/6 bg-redfooter h-7'
-          onClick={onClose}
-          >CANCELAR</button>
-        <button className='w-2/6 bg-footer h-7'
-          onClick={onClose}
-          >SALVAR</button>
-
-        </div>
+      
     </ReactModal>
   );
 };
 
-export default PopupEdit;
+export default PopUpUpload;

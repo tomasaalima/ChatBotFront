@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../components/NavBar";
+import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
 import VideoAdmin from "../../components/admin/VideoAdmin";

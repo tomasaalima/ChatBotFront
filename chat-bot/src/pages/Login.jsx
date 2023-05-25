@@ -1,10 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import DataField from "../components/Login/DataField";
 import ReturnButton from "../components/ReturnButton";
-import { AuthContext } from "../contexts/AuthContext";
-import { FieldContext } from "../contexts/FieldContext";
 
 function Login() {
   const [ click, setClick ] = useState(false);
@@ -34,7 +31,7 @@ function Login() {
       }
     }
   }, [token]);
-
+  
   return(
     <main
       className="bg-ground-login w-full h-full bg-cover bg-no-repeat bg-center relative z-0"
@@ -50,7 +47,7 @@ function Login() {
         to="/"
       />
       <div
-        className=" bg-white absolute shadow-2xl z-10 flex flex-col items-center justify-center
+        className="min-w-login min-h-login max-h-login max-w-login bg-white absolute shadow-2xl z-10 flex flex-col items-center justify-center
         mobile:left-1/10 mobile:top-1/4 mobile:w-4/5 mobile:h-1/2
         desktop:left-middle-login desktop:top-1/5 desktop:w-1/4 desktop:h-1/2
         "
@@ -72,16 +69,8 @@ function Login() {
           >
             Obs.: Essa área é exclusiva apenas para usuários administradores
           </p>
-          <DataField
-            label="Email" 
-            type="email" 
-            holder="Digite seu email"
-          />
-          <DataField 
-            label="Senha" 
-            type="password" 
-            holder="Digite sua senha" 
-          />
+          <DataField label="Email" type="email" holder="Digite seu email"/>
+          <DataField label="Senha" type="password" holder="Digite sua senha"/>
         </form>
         <div
           className="flex justify-end w-4/5"
@@ -102,6 +91,7 @@ function Login() {
           desktop:w-1/5 desktop:h-7
           "
           type="submit"
+
           onClick={() =>setClick(true)}
         >
          Login

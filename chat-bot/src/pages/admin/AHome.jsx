@@ -1,23 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import Exit from "./../../components/admin/Exit";
-import NavBar from "./../../components/NavBar";
+import AMenu from "../../components/admin/AMenu";
 import Background from "./../../components/Background"
 import FrameAdmin from "../../components/admin/FrameAdmin";
 import SessionProtect from "../../components/Login/SessionProtect";
+import FrameUpload from "../../components/admin/FrameUpload";
 
 
 
 function AHome(){
-
     const [activeTab, setActiveTab] = useState("tab1");
       
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
     };
 
-    return (
-        
+    return (   
         <>
             <SessionProtect/>
             <NavBar/>
@@ -51,7 +50,6 @@ function AHome(){
                                 >
                                     EDITAR MATERIAL
                                 </button>
-
                                 <button 
                                     onClick={() => handleTabClick("tab2")}
                                     className={

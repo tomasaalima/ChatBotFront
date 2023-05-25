@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../components/NavBar";
+import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
 import ManagementManuals from "../../components/admin/ManagementManuals";
@@ -43,7 +43,6 @@ function AManuals(){
                                 <div 
                                     className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-white "
                                 >
-                                    
                                     <ManagementManuals 
                                         document="Permanencia 2023.1"
                                     >

@@ -9,7 +9,7 @@ function Recover() {
     >
       <ReturnButton h="8" w="14" left="left-10" top="top-10" bg="buttom" value="Voltar" color="white" to="/login"/>
       <div 
-        className="bg-white absolute shadow-2xl z-10 flex flex-col items-center justify-center
+        className="min-w-login min-h-login max-h-login max-w-login bg-white absolute shadow-2xl z-10 flex flex-col items-center justify-center
         mobile:left-1/10 mobile:top-1/4 mobile:w-4/5 mobile:h-1/2
         desktop:left-middle-login desktop:top-1/5 desktop:w-1/4 desktop:h-1/2
         "
