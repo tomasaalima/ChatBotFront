@@ -6,7 +6,10 @@ function FrameEdital(props){
 
     return(
         <div 
-            className="h-40 w-3/4 m-auto flex items-center justify-center"
+            className="h-40 m-auto flex items-center justify-center
+            mobile:w-90c
+            desktop:w-3/4
+            "
         > 
         <span 
             className="editalhover w-3/4 h-3/4"

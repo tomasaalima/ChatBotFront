@@ -15,13 +15,19 @@ function Edital(){
             <Background/>
             <MakeLogin/>
             <div 
-                className="absolute top-20 text-white flex justify-center w-full h-5/6"
+                className="absolute text-white flex justify-center w-full h-5/6
+                mobile:top-1/2
+                desktop:top-20
+                "
             >
                 <div 
-                    className=" flex flex-col justify-center items-center w-8/12"
+                    className=" flex flex-col justify-center items-center 
+                    mobile:w-90c
+                    desktop:w-8/12
+                    "
                 >
                     <h1 
-                        className="font-oswald text-2xl mt-6"
+                        className="font-oswald text-2xl"
                     >
                         Aproveite nossos tutoriais!
                     </h1>
@@ -42,8 +48,17 @@ function Edital(){
                             </nav>
                         </div>
                         <div 
-                            className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-white "
+                            className="h-full w-full bg-white grid grid-cols-2 gap-x-4 text-white 
+                            mobile:flex mobile:flex-col mobile:h-auto mobile:pb-1/10
+                            desktop:grid desktop:overflow-auto
+                            "
                         >
+                            <FrameEdital document="Permanencia 2023.1"></FrameEdital>
+                            <FrameEdital document="Moradia 2023.1"></FrameEdital>
+                            <FrameEdital document="Permanencia 2023.1"></FrameEdital>
+                            <FrameEdital document="Moradia 2023.1"></FrameEdital>
+                            <FrameEdital document="Permanencia 2023.1"></FrameEdital>
+                            <FrameEdital document="Moradia 2023.1"></FrameEdital>
                             <FrameEdital document="Permanencia 2023.1"></FrameEdital>
                             <FrameEdital document="Moradia 2023.1"></FrameEdital>
                         </div>
