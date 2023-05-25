@@ -11,7 +11,8 @@ function Video(props){
             <iframe  
                 src={`${link}`} 
                 title="YouTube video player" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 className="w-5/6 h-5/6"
                 allowfullscreen 
             >   
