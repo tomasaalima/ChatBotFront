@@ -46,14 +46,18 @@ module.exports = {
         'total': '1%',
         'middle-login': '37.5%',
         '22': '88px',
+        '45c': '45%',
         '68c': '68%',
-        '95p': '90%'
+        '90c': '90%',
       },
       fontFamily: {
         'exo2': ['Almarai', 'Antic Didone', 'sans-serif'],
         'oswald': ['Oswald', 'sans-serif'],
         'roboto': ['Roboto', 'sans-serif'],
         'error': ['Abel', 'sans-serif'],
+      },
+      fontSize: {
+        'mobiletxt': '0.8rem',
       },
     },
   },

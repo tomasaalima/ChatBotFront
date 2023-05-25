@@ -4,6 +4,34 @@ import DataField from "../components/Login/DataField";
 import ReturnButton from "../components/ReturnButton";
 
 function Login() {
+  const [ click, setClick ] = useState(false);
+  const [ warning, setWarning ] = useState('');
+
+  const { mail, passwd } = useContext(FieldContext);
+  const { token, setCredentials, credentials } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (mail !== '' && passwd !== '' && click) {
+      setCredentials({"email": mail,"password": passwd});
+      setWarning('');
+      setClick(false);
+    } else if (click) {
+      setWarning("revise os campos")
+      setClick(false);
+    }
+  }, [click]);
+
+  useEffect(() => {
+    if (token.access_token){
+      if (credentials.email !== 'logout') {
+        if (token.access_token === 'denied') setWarning("Email ou Senha incorretos");
+        else navigate('/admin/');
+      }
+    }
+  }, [token]);
+  
   return(
     <main
       className="bg-ground-login w-full h-full bg-cover bg-no-repeat bg-center relative z-0"
