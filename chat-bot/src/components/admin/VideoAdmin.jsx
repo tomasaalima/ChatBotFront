@@ -17,23 +17,29 @@ function VideoAdmin(props) {
   };
 
    //PopUp Alert
-   const [modalOpen, setModalOpen] = useState(false);
-   const handleOpenModal = () => {
-     setModalOpen(true);
-   };
-   const handleCloseModal = () => {
-     setModalOpen(false);
-   };
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
-   //PopUp Edit
+  //PopUp Edit
 
-   const [editOpen, setEditOpen] = useState(false);
-   const abrirEdit = () => {
-       setEditOpen(true);
-   }
-   const fecharEdit = () => {
-       setEditOpen(false);
-   }
+  const [editOpen, setEditOpen] = useState(false);
+  const abrirEdit = () => {
+      setEditOpen(true);
+  }
+  const fecharEdit = () => {
+      setEditOpen(false);
+  }
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleIframeLoad = () => {
+    setIsLoading(false);
+  };
 
   return (
     <div
@@ -41,12 +47,13 @@ function VideoAdmin(props) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {isLoading && <div className="text-2xl text-center  text-letter">Carregando...</div>}
       <iframe
         className="h-full w-full"
+        onLoad={handleIframeLoad}
         src={`${link}`}
         title="YouTube video player"        
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
       >
       </iframe>
 

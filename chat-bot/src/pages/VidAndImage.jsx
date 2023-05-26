@@ -1,30 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FrameEdital from "../components/FrameEdital";
 import Video from "../components/Video";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
+import axios from "axios";
 
 
 function VidAndImages(){
-    const [ docs, setDocs ] = useState({docs: [
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-    ], videos: [
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-    ]})
-
+    const [ docs, setDocs ] = useState({
+        docs: [], videos: []
+    })
+    
     const [activeTab, setActiveTab] = useState("videos");
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/tutoriais')
+    .then(response => updateVideos(response.data.map((element) => {
+        return <Video key={element.id} link={element.src} description={element.title}/>
+    }
+    )))
+    .catch(error => {
+      console.log('deu ruim');
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const updateVideos = (newVideos) => {
+        setDocs(prevState => ({
+          ...prevState,
+          videos: newVideos
+        }));
+      };
 
     return (
         <>
@@ -79,20 +85,20 @@ function VidAndImages(){
                         <div //Documentos
                             className={`w-full grid min-h-centralPanel
                             desktop:overflow-auto desktop:max-h-centralPanel
-                            mobile:max-h-none mobile:pb-16
+                            mobile:max-h-none mobile:pb-16 text-center
 
                             ${docs.docs.length > 0 || docs.videos.length > 0 ? 'mobile:grid-cols-1 desktop:grid-cols-2' : 'text-center flex justify-center'}`}
                         >                            
-                            {docs.docs.length > 0 && activeTab === 'videos' && docs.docs}
-                            {docs.videos.length > 0 && activeTab === 'manuals' && docs.videos}
-                            {docs.docs.length === 0 && activeTab === 'videos' &&
+                            {docs.docs.length > 0 && activeTab === 'manuals' && docs.docs}
+                            {docs.videos.length > 0 && activeTab === 'videos' && docs.videos}
+                            {docs.docs.length === 0 && activeTab === 'manuals' &&
                                 <p 
                                     className="pt-5 text-letter"
                                 >
                                     Nenhum video disponível no momento
                                 </p>    
                             }
-                            {docs.videos.length === 0 && activeTab === 'manuals' && 
+                            {docs.videos.length === 0 && activeTab === 'videos' && 
                                 <p 
                                     className="pt-5 text-letter"
                                 >
