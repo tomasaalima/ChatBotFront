@@ -1,18 +1,54 @@
 import ReactModal from 'react-modal';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const PopUpEditalUpload = ({ isOpen, onClose }) => {
+    const [text, setText] = useState(null);
+    const [file, setFile] = useState(null);
 
     const [fileName, setFileName] = useState('--');
 
+    const [ post, setPost ] = useState(false);
+
+    useEffect(() => {
+      if (text !== null && post && file) {
+        const formData = new FormData();
+        formData.append('arquivo', file);
+        formData.append('titulo', text);
+        axios.post('http://localhost:8000/api/editais', formData)
+        .then(response => {
+          console.log(response.data);
+          resetInputs();
+        })
+        .catch(error => console.error(error));
+      }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [post]);
+
+    const handleCancel = (event) => {
+      resetInputs();
+      onClose();
+    };
+
+    const handlePost = () => {
+      setPost(true);
+      onClose();
+    };
+
+    const resetInputs = () => {
+      setText(null);
+      setPost(false);
+      setFileName("--");
+    }
+
     const handleFileChange = (event) => {
       const selectedFile = event.target.files[0];
+      setFile(selectedFile);
+
       const selectedFileName = selectedFile ? selectedFile.name : 'SELECIONE O ARQUIVO...';
       setFileName(selectedFileName);
     };
-
-    const [text, setText] = useState('');
 
     const handleChangeText = (event) => {
         setText(event.target.value);
@@ -122,14 +158,12 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
                    <form>
                         <input 
                           type="file" 
-                          id="upload" 
-                          class="file-upload" 
+                          id="upload"
                           className='hidden' 
                           onChange={handleFileChange}
                         />
                         <label 
-                          for="upload" 
-                          class="custom-file-upload" 
+                          htmlFor="upload"
                           className='flex cursor-pointer bg-green-600 text-white rounded-sm h-8 w-48 justify-center items-center text-sm font-semibold hover:bg-green-500'
                         >
                           SELECIONE O ARQUIVO...
@@ -144,13 +178,13 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
         >
             <button 
               className='w-2/4 bg-redfooter h-7'
-              onClick={onClose}
+              onClick={handleCancel}
             >
               CANCELAR
             </button>
             <button 
               className='w-2/4 bg-footer h-7'
-              onClick={onClose}
+              onClick={handlePost}
             >
               POSTAR
             </button>
