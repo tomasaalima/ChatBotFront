@@ -2,20 +2,22 @@ import ReactModal from 'react-modal';
 import { useState } from 'react';
 
 
-const PopUpUpload = ({ isOpen, onClose }) => {
-
-    const [selectedOption, setSelectedOption] = useState('');
-
-    const handleChange = (event) => {
-        setSelectedOption(event.target.value);
-    };
-
+const PopUpVideoUpload = ({ isOpen, onClose }) => {
     const [text, setText] = useState('');
 
     const handleChangeText = (event) => {
         setText(event.target.value);
     };
 
+    const handleCancel = (event) => {
+      onClose();
+
+    };
+
+    const handlePost = (event) => {
+      onClose();
+    };
+    
   return (
     <ReactModal
       isOpen={isOpen}
@@ -54,10 +56,10 @@ const PopUpUpload = ({ isOpen, onClose }) => {
         </h1>
       </div>
       <div 
-        className='flex items-center justify-center flex-col w-full h-full text-lg'
+        className='flex items-center justify-center flex-col w-full gap-2 h-full text-lg'
       >
-       <div 
-        className='w-full h-1/5 flex flex-row'
+         <div 
+        className='w-full h-2/12 flex flex-row'
       >
             <div 
               className='h-full flex items-center justify-end
@@ -65,7 +67,7 @@ const PopUpUpload = ({ isOpen, onClose }) => {
               desktop:text-xl desktop:w-2/12
               '
             >
-                Descrição:
+                Título:
             </div>
             <div 
               className='flex items-center justify-center w-10/12 h-full'
@@ -73,81 +75,54 @@ const PopUpUpload = ({ isOpen, onClose }) => {
                 <form 
                   className='w-full h-full flex items-center justify-center'
                 >
-                   <textarea 
+                   <input 
                     type='text'                         
                     value={text}
                     onChange={handleChangeText}
-                    className='h-5/6 w-11/12 border-2 border-gray-400 focus:outline-none focus:border-green-700 focus:ring-green-700 pl-2 pr-2'
+                    className='h-full w-11/12 border-2 border-gray-400 focus:outline-none focus:border-green-700 focus:ring-green-700 pl-2 pr-2'
                     />
                 </form>
             </div>
         </div> 
-
-
-
+       <div 
+        className='w-full h-2/12 flex flex-row'
+      >
+            <div 
+              className='h-full flex items-center justify-end
+              mobile:text-sm mobile:w-3/12
+              desktop:text-xl desktop:w-2/12
+              '
+            >
+                Link YouTube:
+            </div>
+            <div 
+              className='flex items-center justify-center w-10/12 h-full'
+            >
+                <form 
+                  className='w-full h-full flex items-center justify-center'
+                >
+                   <input 
+                    type='text'                         
+                    value={text}
+                    onChange={handleChangeText}
+                    placeholder='Exemplo: https://www.youtube.com/embed/WsEv01p3GXU'
+                    className='h-full w-11/12 border-2 border-gray-400 focus:outline-none focus:border-green-700 focus:ring-green-700 pl-2 pr-2'
+                    />
+                </form>
+            </div>
+        </div> 
         <div 
           className='w-full h-1/5 flex flex-row'
         >
             <div 
-              className='h-full flex items-center justify-end
-              mobile:w-8/12 mobile:text-sm
-              desktop:w-4/12 desktop:text-xl              
+              className='h-full w-full flex items-center justify-center
+              mobile:text-sm
+              desktop:text-xl              
               '
             >
-                Tipo de material:
+                Ou
             </div>
-            <div 
-              className='flex items-center justify-start w-9/12 '
-            >
-                <form 
-                  className='pl-6
-                  mobile:text-sm
-                  desktop:text-xl 
-                  '
-                >
-                    <input 
-                      type='radio' 
-                      name="option" 
-                      value="option1"
-                      checked={selectedOption === 'option1'}
-                      onChange={handleChange}
-                    >
-                    </input>
-                    <label 
-                      className='pl-4'
-                    >
-                      Manual
-                    </label> <br/>
-
-                    <input 
-                      type='radio' 
-                      name="option" 
-                      value="option2"
-                      checked={selectedOption === 'option2'}
-                      onChange={handleChange}
-                    >
-                    </input>
-                    <label 
-                      className='pl-4'
-                    >
-                      Vídeo
-                    </label> <br/>
-
-                    <input 
-                      type='radio' 
-                      name="option" 
-                      value="option3"
-                      checked={selectedOption === 'option3'}
-                      onChange={handleChange}
-                    >
-                    </input>
-                    <label 
-                      className='pl-4'
-                    >
-                      Edital
-                    </label>
-                </form>
-            </div>
+           
         </div>
         <div 
           className='w-full h-2/5 flex justify-center -mt-2'
@@ -189,19 +164,19 @@ const PopUpUpload = ({ isOpen, onClose }) => {
             </div>
         </div>
         <div 
-          className=' w-full h-8 flex justify-around font-roboto font-extrabold text-white mb-2'
+          className='absolute bottom-0 w-full h-8 flex justify-around font-roboto font-extrabold text-white'
         >
             <button 
-              className='w-2/6 bg-redfooter h-7'
-              onClick={onClose}
+              className='w-2/4 bg-redfooter h-7'
+              onClick={handleCancel}
             >
               CANCELAR
             </button>
             <button 
-              className='w-2/6 bg-footer h-7'
-              onClick={onClose}
+              className='w-2/4 bg-footer h-7'
+              onClick={handlePost}
             >
-              SALVAR
+              POSTAR
             </button>
 
         </div>
@@ -212,4 +187,4 @@ const PopUpUpload = ({ isOpen, onClose }) => {
   );
 };
 
-export default PopUpUpload;
+export default PopUpVideoUpload;

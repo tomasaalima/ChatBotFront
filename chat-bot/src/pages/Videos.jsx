@@ -1,36 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FrameEdital from "../components/FrameEdital";
 import Video from "../components/Video";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
 import axios from "axios";
 
-
 function VidAndImages(){
-    const [ docs, setDocs ] = useState({
-        docs: [], videos: []
-    })
+    const [ docs, setDocs ] = useState({ docs: [], videos: [] })
     
     const [activeTab, setActiveTab] = useState("videos");
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/tutoriais')
-    .then(response => updateVideos(response.data.map((element) => {
-        return <Video key={element.id} link={element.src} description={element.title}/>
-    }
-    )))
-    .catch(error => {
-      console.log('deu ruim');
-    });
+
+        axios.get('http://localhost:8000/api/videos')
+        .then(response => updateVideos(response.data.map((element) => <Video key={element.id} link={element.link} description={element.titulo}/>)))
+        .catch(error => console.log(error));
+
+        axios.get('http://localhost:8000/api/manuais')
+        .then(response => updateDocs(response.data.map((element) => <FrameEdital key={element.id} document={element.titulo} />)))
+        .catch(error => console.log(error));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const updateVideos = (newVideos) => {
-        setDocs(prevState => ({
-          ...prevState,
-          videos: newVideos
-        }));
-      };
+    const updateVideos = (newVideos) => setDocs(prevState => ({...prevState, videos: newVideos}));
+    const updateDocs = (newManuals) => setDocs(prevState => ({...prevState, docs: newManuals}));
 
     return (
         <>
@@ -83,11 +77,11 @@ function VidAndImages(){
                             </button>
                         </div>
                         <div //Documentos
-                            className={`w-full grid min-h-centralPanel
+                            className={`w-full min-h-centralPanel
                             desktop:overflow-auto desktop:max-h-centralPanel
                             mobile:max-h-none mobile:pb-16 text-center
 
-                            ${docs.docs.length > 0 || docs.videos.length > 0 ? 'mobile:grid-cols-1 desktop:grid-cols-2' : 'text-center flex justify-center'}`}
+                            ${(docs.docs.length > 0 && activeTab === 'manuals') || (docs.videos.length > 0 && activeTab === 'videos') ? 'grid mobile:grid-cols-1 desktop:grid-cols-2' : 'text-center flex justify-center'}`}
                         >                            
                             {docs.docs.length > 0 && activeTab === 'manuals' && docs.docs}
                             {docs.videos.length > 0 && activeTab === 'videos' && docs.videos}
@@ -95,7 +89,7 @@ function VidAndImages(){
                                 <p 
                                     className="pt-5 text-letter"
                                 >
-                                    Nenhum video disponível no momento
+                                    Nenhum manual disponível no momento
                                 </p>    
                             }
                             {docs.videos.length === 0 && activeTab === 'videos' && 

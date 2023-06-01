@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
 import VideoAdmin from "../../components/admin/VideoAdmin";
 import SessionProtect from "../../components/Login/SessionProtect";
 import axios from "axios";
+import { RefreshContext } from "../../contexts/RefreshContext";
 
 
 function AVideos(){
     const [ docs, setDocs ] = useState([])
+    
+    const { refresh } = useContext(RefreshContext);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/tutoriais')
-    .then(response => updateVideos(response.data.map((element) => {
-        return <VideoAdmin id={element.id} key={element.id} link={element.src}/>
-    }
-    )))
-    .catch(error => {
-      console.log('deu ruim');
-    });
+
+        axios.get('http://localhost:8000/api/videos')
+        .then(response => updateVideos(response.data.map((element) => <VideoAdmin key={element.id} link={element.link} description={element.titulo}/>)))
+        .catch(error => console.log(error));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const updateVideos = (newVideos) => {
-        setDocs(newVideos);
-      };
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/videos')
+        .then(response => updateVideos(response.data.map((element) => <VideoAdmin key={element.id} link={element.link} description={element.titulo}/>)))
+        .catch(error => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [refresh]);
+
+    const updateVideos = (newVideos) => setDocs(newVideos);
 
     return (
         <>

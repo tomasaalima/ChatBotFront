@@ -95,7 +95,7 @@ function AHome(){
                                             src="/img/admin/icon-documentAdmin.png" 
                                             alt="Redirecionamento edital" 
                                             className="w-20 object-cover mt-2" 
-                                            tittle="Edital" 
+                                            tittle="Editais" 
                                             to="/admin/edicts"
                                         />
                                         <FrameAdmin 
@@ -124,7 +124,7 @@ function AHome(){
                                         src="/img/admin/icon-documentAdmin.png" 
                                         alt="Redirecionamento edital" 
                                         className="w-20 object-cover mt-2" 
-                                        tittle="Edital"
+                                        tittle="Editais"
                                     />
                                     <FrameUpload 
                                         src="/img/admin/video-icon.png" 

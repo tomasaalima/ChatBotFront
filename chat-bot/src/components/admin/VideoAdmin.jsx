@@ -6,6 +6,9 @@ import PopupEdit from './PopupEdit';
 
 function VideoAdmin(props) {
   const { link } = props;
+  const { id } = props;
+
+  //const { titulo } = props;
   const [showButtons, setShowButtons] = useState(false);
 
   const handleMouseEnter = () => {
@@ -16,7 +19,7 @@ function VideoAdmin(props) {
     setShowButtons(false);
   };
 
-   //PopUp Alert
+  //PopUp Alert
   const [modalOpen, setModalOpen] = useState(false);
   const handleOpenModal = () => {
     setModalOpen(true);
@@ -57,7 +60,7 @@ function VideoAdmin(props) {
       >
       </iframe>
 
-      {showButtons && (
+      {(showButtons && !isLoading) && (
         <div 
           className="buttons-wrapper"
         >
@@ -78,6 +81,7 @@ function VideoAdmin(props) {
       <PopupAlert 
         isOpen={modalOpen} 
         onClose={handleCloseModal} 
+        id={id}
       />
       <PopupEdit 
         isOpen={editOpen} 

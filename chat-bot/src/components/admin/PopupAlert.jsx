@@ -1,7 +1,23 @@
-
 import ReactModal from 'react-modal';
+import axios from 'axios';
+import { useContext } from 'react';
+import { RefreshContext } from '../../contexts/RefreshContext';
 
-const PopupAlert = ({ isOpen, onClose }) => {
+
+const PopupAlert = ({ isOpen, onClose, id }) => {
+  const { videos, setVideos } = useContext(RefreshContext);
+
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8000/videos/2961`)
+      .then(() => console.log('Vídeo removido com sucesso!'))
+      setVideos(() => !videos);
+    } catch (error) {
+      console.error('Erro ao remover vídeo:', error);
+    }
+  };
+
   return (
     <ReactModal
       isOpen={isOpen}
@@ -45,7 +61,10 @@ const PopupAlert = ({ isOpen, onClose }) => {
           onClick={onClose}
           >NÃO</button>
         <button className='w-2/6 bg-footer h-6'
-          onClick={onClose}
+          onClick={() => {
+            handleDelete(id);
+            onClose();
+          }}
           >SIM</button>
 
         </div>
