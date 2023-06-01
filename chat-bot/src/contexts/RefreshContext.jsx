@@ -6,10 +6,8 @@ const RefreshContext = createContext({});
 function RefreshProvider({ children }) {
   const [ refresh, setRefresh ] = useState(true);
 
-  console.log(refresh);
-
   return (
-    <RefreshContext.Provider value={{ refresh }}>
+    <RefreshContext.Provider value={{ refresh, setRefresh }}>
       {children}
     </RefreshContext.Provider>
   );

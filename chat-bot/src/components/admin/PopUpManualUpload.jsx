@@ -123,13 +123,11 @@ const PopUpManualUpload = ({ isOpen, onClose }) => {
                         <input 
                           type="file" 
                           id="upload" 
-                          class="file-upload" 
                           className='hidden' 
                           onChange={handleFileChange}
                         />
                         <label 
-                          for="upload" 
-                          class="custom-file-upload" 
+                          htmlfor="upload" 
                           className='flex cursor-pointer bg-green-600 text-white rounded-sm h-8 w-48 justify-center items-center text-sm font-semibold hover:bg-green-500'
                         >
                           SELECIONE O ARQUIVO...

@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./VideoAdmin.css"; 
 import PopupAlert from "./PopupAlert";
 import PopupEdit from './PopupEdit';
 
 
-function VideoAdmin(props) {
-  const { link } = props;
-  const { id } = props;
+function VideoAdmin({link, unique, description}) {
+  const [ idValue, setIdValue ] = useState(null);
 
-  //const { titulo } = props;
   const [showButtons, setShowButtons] = useState(false);
 
+  useEffect(() => {
+    if (unique !== undefined) {
+      setIdValue(unique)
+    }
+  }, [unique]);
+  
   const handleMouseEnter = () => {
     setShowButtons(true);
   };
@@ -81,7 +85,7 @@ function VideoAdmin(props) {
       <PopupAlert 
         isOpen={modalOpen} 
         onClose={handleCloseModal} 
-        id={id}
+        id={idValue}
       />
       <PopupEdit 
         isOpen={editOpen} 

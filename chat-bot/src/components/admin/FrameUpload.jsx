@@ -44,9 +44,6 @@ function FrameUpload(props) {
           {tittle==='Vídeos' &&
             <PopUpVideoUpload isOpen={editOpen} onClose={fecharEdit}/>
           }
-          {tittle==='Vídeos' &&
-            <PopUpVideoUpload isOpen={editOpen} onClose={fecharEdit}/>
-          }
           {tittle==="Manuais" &&
             <PopUpManualUpload isOpen={editOpen} onClose={fecharEdit} />
           }

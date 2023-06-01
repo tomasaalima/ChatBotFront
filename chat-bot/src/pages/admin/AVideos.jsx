@@ -16,7 +16,7 @@ function AVideos(){
     useEffect(() => {
 
         axios.get('http://localhost:8000/api/videos')
-        .then(response => updateVideos(response.data.map((element) => <VideoAdmin key={element.id} link={element.link} description={element.titulo}/>)))
+        .then(response => updateVideos(response.data.map((element) => <VideoAdmin key={element.id} unique={element.id}  link={element.link} description={element.titulo}/>)))
         .catch(error => console.log(error));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

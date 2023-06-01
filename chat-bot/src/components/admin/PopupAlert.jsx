@@ -1,22 +1,32 @@
 import ReactModal from 'react-modal';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useContext } from 'react';
 import { RefreshContext } from '../../contexts/RefreshContext';
 
-
 const PopupAlert = ({ isOpen, onClose, id }) => {
-  const { videos, setVideos } = useContext(RefreshContext);
+  const [ idValue, setIdValue ] = useState(null);
+  const [ remove, setToRemove ] = useState(false);
 
-
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8000/videos/2961`)
-      .then(() => console.log('Vídeo removido com sucesso!'))
-      setVideos(() => !videos);
-    } catch (error) {
-      console.error('Erro ao remover vídeo:', error);
+  const { refresh, setRefresh } = useContext(RefreshContext);
+  
+  useEffect(() => {
+    if (remove) {
+      axios.delete(`http://localhost:8000/api/videos/${idValue}`)
+          .then(response => {
+            console.log(response.data)
+            setRefresh(!refresh)
+          })
+          .catch(error => console.error(error));
     }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [remove]);
+
+  useEffect(() => {
+    if (id !== undefined) {
+      setIdValue(id)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   return (
     <ReactModal
@@ -59,13 +69,14 @@ const PopupAlert = ({ isOpen, onClose, id }) => {
       <div className=' w-full h-2/6 flex justify-around font-roboto font-extrabold text-white pt-4'>
         <button className='w-2/6 bg-redfooter h-6'
           onClick={onClose}
-          >NÃO</button>
+        >
+          NÃO
+        </button>
         <button className='w-2/6 bg-footer h-6'
-          onClick={() => {
-            handleDelete(id);
-            onClose();
-          }}
-          >SIM</button>
+          onClick={() => setToRemove(true)}
+        >
+          SIM
+        </button>
 
         </div>
     </ReactModal>
