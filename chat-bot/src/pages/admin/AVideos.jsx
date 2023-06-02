@@ -6,6 +6,7 @@ import VideoAdmin from "../../components/admin/VideoAdmin";
 import SessionProtect from "../../components/Login/SessionProtect";
 import axios from "axios";
 import { RefreshContext } from "../../contexts/RefreshContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 
 function AVideos(){

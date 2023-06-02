@@ -4,7 +4,7 @@ import PopupAlert from "./PopupAlert";
 import PopupEdit from './PopupEdit';
 
 
-function VideoAdmin({link, unique, description}) {
+function VideoAdmin({link, unique}) {
   const [ idValue, setIdValue ] = useState(null);
 
   const [showButtons, setShowButtons] = useState(false);
@@ -86,10 +86,13 @@ function VideoAdmin({link, unique, description}) {
         isOpen={modalOpen} 
         onClose={handleCloseModal} 
         id={idValue}
+        type={"videos"}
       />
       <PopupEdit 
         isOpen={editOpen} 
-        onClose={fecharEdit} 
+        onClose={fecharEdit}
+        id={idValue}
+        type={["videos", "videos"]}
       />
     </div>
   );

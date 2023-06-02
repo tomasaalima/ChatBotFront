@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import FrameEdital from "../components/FrameEdital";
+import FrameManual from "../components/FrameManual";
 import Video from "../components/Video";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
 import axios from "axios";
 
 function VidAndImages(){
-    const [ docs, setDocs ] = useState({ docs: [], videos: [] })
-    
+    const [ docs, setDocs ] = useState({ docs: [], videos: [] });
+
     const [activeTab, setActiveTab] = useState("videos");
 
     useEffect(() => {
@@ -17,7 +17,7 @@ function VidAndImages(){
         .catch(error => console.log(error));
 
         axios.get('http://localhost:8000/api/manuais')
-        .then(response => updateDocs(response.data.map((element) => <FrameEdital key={element.id} document={element.titulo} />)))
+        .then(response => updateDocs(response.data.map((element) => <FrameManual key={element.id} id={element.id} document={element.titulo} />)))
         .catch(error => console.log(error));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -7,8 +7,6 @@ import FrameAdmin from "../../components/admin/FrameAdmin";
 import SessionProtect from "../../components/Login/SessionProtect";
 import FrameUpload from "../../components/admin/FrameUpload";
 
-
-
 function AHome(){
     const [activeTab, setActiveTab] = useState("edit");
       

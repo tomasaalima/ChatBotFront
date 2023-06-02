@@ -1,13 +1,18 @@
 import ReactModal from 'react-modal';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const PopUpEditalUpload = ({ isOpen, onClose }) => {
     const [text, setText] = useState(null);
     const [file, setFile] = useState(null);
+    const [ message, setMessage ] = useState(null);
+
 
     const [fileName, setFileName] = useState('--');
+    const { token } = useContext(AuthContext);
+
 
     const [ post, setPost ] = useState(false);
 
@@ -16,11 +21,16 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
         const formData = new FormData();
         formData.append('arquivo', file);
         formData.append('titulo', text);
-        axios.post('http://localhost:8000/api/editais', formData)
-        .then(response => {
+        axios.post('http://localhost:8000/api/editais', formData, {headers: {
+          'Authorization': `Bearer ${token.access_token}`
+      }})
+        .then((response) => {
           console.log(response.data);
-          resetInputs();
+          setMessage(response.data.message);
         })
+        .then(() => setTimeout(() => {
+          resetInputs();
+        }, 4000))
         .catch(error => console.error(error));
       }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,13 +43,13 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
 
     const handlePost = () => {
       setPost(true);
-      onClose();
     };
 
     const resetInputs = () => {
       setText(null);
       setPost(false);
       setFileName("--");
+      setMessage(null);
     }
 
     const handleFileChange = (event) => {
@@ -147,9 +157,19 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
                     >
                     </img>
                 </div>
+                
                 <div 
                   className='flex flex-col items-center'
                 >
+                <div
+                  className='w-full flex justify-center items-end'
+                >
+                  <p
+                    className='text-green-500 desktop:text-xl mobile:text-sm'
+                  >
+                    {message}
+                  </p>
+                </div>
                     <h3 
                       className=' text-green-800 text-base mb-2'
                     >
@@ -173,6 +193,7 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
                 </div>
             </div>
         </div>
+        
         <div 
           className='absolute bottom-0 w-full h-8 flex justify-around font-roboto font-extrabold text-white'
         >
@@ -180,7 +201,7 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
               className='w-2/4 bg-redfooter h-7'
               onClick={handleCancel}
             >
-              CANCELAR
+              VOLTAR
             </button>
             <button 
               className='w-2/4 bg-footer h-7'

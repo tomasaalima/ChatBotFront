@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function SessionProtect() {
-  /*const { token } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
 
   useEffect(() => {
       if (!token.access_token || token.access_token === 'denied')
@@ -12,7 +12,7 @@ function SessionProtect() {
   }, [token]);
 
   const navigate = useNavigate();
-*/
+
   return (
     <></>
   );

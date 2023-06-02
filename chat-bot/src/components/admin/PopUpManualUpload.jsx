@@ -1,26 +1,35 @@
 import ReactModal from 'react-modal';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const PopUpManualUpload = ({ isOpen, onClose }) => {
     const [text, setText] = useState(null);
     const [file, setFile] = useState(null);
+    const [ message, setMessage ] = useState(null);
     
     const [fileName, setFileName] = useState('--');
 
     const [ post, setPost ] = useState(false);
+    const { token } = useContext(AuthContext);
+
 
     useEffect(() => {
       if (text !== null && post && file) {
         const formData = new FormData();
         formData.append('arquivo', file);
         formData.append('titulo', text);
-        axios.post('http://localhost:8000/api/manuais', formData)
-        .then(response => {
+        axios.post('http://localhost:8000/api/manuais', formData, {headers: {
+          'Authorization': `Bearer ${token.access_token}`
+      }})
+        .then((response) => {
           console.log(response.data);
-          resetInputs();
+          setMessage(response.data.message);
         })
+        .then(() => setTimeout(() => {
+          resetInputs();
+        }, 4000))
         .catch(error => console.error(error));
       }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,13 +42,13 @@ const PopUpManualUpload = ({ isOpen, onClose }) => {
 
     const handlePost = () => {
       setPost(true);
-      onClose();
     };
 
     const resetInputs = () => {
       setText(null);
       setPost(false);
       setFileName("--");
+      setMessage(null);
     }
 
     const handleFileChange = (event) => {
@@ -89,7 +98,7 @@ const PopUpManualUpload = ({ isOpen, onClose }) => {
         className='bg-green-600 w-full h-9 flex items-center justify-center text-white font-roboto font-bold text-lg'
       >
         <h1>
-          POSTAR UM EDITAL
+          POSTAR UM MANUAL
         </h1>
       </div>
       <div 
@@ -150,6 +159,15 @@ const PopUpManualUpload = ({ isOpen, onClose }) => {
                 <div 
                   className='flex flex-col items-center'
                 >
+                <div
+                  className='w-full flex justify-center items-end'
+                >
+                  <p
+                    className='text-green-500 desktop:text-xl mobile:text-sm'
+                  >
+                    {message}
+                  </p>
+                </div>
                     <h3 
                       className=' text-green-800 text-base mb-2'
                     >
@@ -180,7 +198,7 @@ const PopUpManualUpload = ({ isOpen, onClose }) => {
               className='w-2/4 bg-redfooter h-7'
               onClick={handleCancel}
             >
-              CANCELAR
+              VOLTAR
             </button>
             <button 
               className='w-2/4 bg-footer h-7'

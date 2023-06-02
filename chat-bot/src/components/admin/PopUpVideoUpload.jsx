@@ -1,12 +1,15 @@
 import ReactModal from 'react-modal';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const PopUpVideoUpload = ({ isOpen, onClose }) => {
     const [text, setText] = useState(null);
     const [link, setLink] = useState(null);
     const [file, setFile] = useState(null);
+
+    const [ message, setMessage ] = useState(null);
 
     const [fileName, setFileName] = useState('--');
 
@@ -21,6 +24,8 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
     };
     
     const [ post, setPost ] = useState(false);
+
+    const { token } = useContext(AuthContext);
     
     useEffect(() => {
 
@@ -34,11 +39,17 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
       }*/
 
       if (text !== null && link !== null && post) {
-        axios.post('http://localhost:8000/api/videos', {"link": link , "titulo": text})
-        .then(response => {
-          resetInputs();
+        console.log(token);
+        axios.post('http://localhost:8000/api/videos', {"link": link , "titulo": text}, {headers: {
+          'Authorization': `Bearer ${token.access_token}`
+      }})
+        .then((response) => {
           console.log(response.data);
+          setMessage(response.data.message);
         })
+        .then(() => setTimeout(() => {
+          resetInputs();
+        }, 4000))
         .catch(error => console.error(error));
       }
 
@@ -58,6 +69,7 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
       setLink(null);
       setPost(false);
       setFileName("--");
+      setMessage(null);
     }
 
     const handleCancel = (event) => {
@@ -67,7 +79,6 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
 
     const handlePost = () => {
       setPost(true);
-      onClose();
     };
 
   return (
@@ -176,6 +187,7 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
             </div>
            
         </div>
+        
         <div 
               className='w-full h-1/10 flex items-center justify-center
               mobile:text-sm
@@ -187,9 +199,11 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
         <div 
           className='w-full h-2/5 flex justify-center -mt-2'
         >
+        
             <div 
               className=' w-4/5 h-5/6 bg-slate-100 flex flex-row items-center justify-center shadow-xl'
             >
+            
                 <div>
                     <img 
                       src='/img/admin/Upload-icon.png' alt='Upload' className='w-16 mr-6 mt-4'
@@ -199,6 +213,15 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
                 <div 
                   className='flex flex-col items-center'
                 >
+                <div
+                  className='w-full flex justify-center items-end'
+                >
+                  <p
+                    className='text-green-500 desktop:text-xl mobile:text-sm'
+                  >
+                    {message}
+                  </p>
+                </div>
                     <h3 
                       className=' text-green-800 text-base mb-2'
                     >
@@ -229,7 +252,7 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
               className='w-2/4 bg-redfooter h-7'
               onClick={handleCancel}
             >
-              CANCELAR
+              VOLTAR
             </button>
             <button 
               className='w-2/4 bg-footer h-7'

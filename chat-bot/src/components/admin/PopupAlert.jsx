@@ -2,19 +2,23 @@ import ReactModal from 'react-modal';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { RefreshContext } from '../../contexts/RefreshContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
-const PopupAlert = ({ isOpen, onClose, id }) => {
+const PopupAlert = ({ isOpen, onClose, id, type }) => {
   const [ idValue, setIdValue ] = useState(null);
   const [ remove, setToRemove ] = useState(false);
 
   const { refresh, setRefresh } = useContext(RefreshContext);
+  const { token } = useContext(AuthContext);
+
   
   useEffect(() => {
     if (remove) {
-      axios.delete(`http://localhost:8000/api/videos/${idValue}`)
+      axios.delete(`http://localhost:8000/api/${type}/${idValue}`, {headers: {
+        'Authorization': `Bearer ${token.access_token}`
+    }})
           .then(response => {
-            console.log(response.data)
-            setRefresh(!refresh)
+            setRefresh(!refresh);
           })
           .catch(error => console.error(error));
     }
