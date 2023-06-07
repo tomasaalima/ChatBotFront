@@ -5,7 +5,8 @@ import axios from 'axios';
 
 function ManagementManuals({ document, unique }){
     const [ idValue, setIdValue ] = useState(null);
-    const [download, setDownload] = useState(null);
+    const [ download, setDownload ] = useState(null);
+    const [ mouseEnter, setMouseEnter ] = useState(null);
 
     useEffect(() => {
         if (unique !== undefined) {
@@ -46,10 +47,12 @@ function ManagementManuals({ document, unique }){
 
     return(
         <div 
+            onMouseEnter={() => setMouseEnter(true)}
+            onMouseLeave={() => setMouseEnter(false)}
             className="h-40 w-full m-auto flex items-center justify-center"
         > 
         <span 
-            className="editalhover w-4/5 h-4/6"
+            className="w-4/5 h-4/6"
         >
             <div 
                 className="bg-green-400 h-5/6 flex items-center justify-center"
@@ -95,7 +98,7 @@ function ManagementManuals({ document, unique }){
 
             </div>
             <div 
-                className="flex flex-row h-8"
+                className={`h-8 ${mouseEnter ? "flex flex-row" : "mobile:flex desktop:hidden  flex-row"}`}
             >
                 <button 
                     className="w-full bg-redfooter bottom-0 font-exo2 text-white"

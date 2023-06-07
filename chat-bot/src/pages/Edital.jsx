@@ -23,18 +23,19 @@ function Edital(){
         <>
             <NavBar/>
             <Background/>
-            <div //Screen
-                className="absolute text-white flex flex-col justify-center items-center w-screen top-20"
+            <div //Título da página
+                className="absolute top-20 w-full text-center"
             >
-                <div //Título da página
-                    className="w-full text-center mb-32"
+                <h1 
+                    className="text-white font-oswald text-2xl mt-6"
                 >
-                    <h1 
-                        className="font-oswald text-2xl mt-6"
-                    >
-                        Aproveite nossos tutoriais!
-                    </h1>
-                </div>
+                    Aproveite nossos tutoriais!
+                </h1>
+            </div>
+
+            <div //Screen
+                className="absolute text-white flex  justify-center  w-full top-40"
+            >
 
                 <div //Container do painel central
                     className="w-full flex items-start justify-center"

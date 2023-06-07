@@ -39,7 +39,11 @@ function FrameUpload(props) {
               </h2>
           
             </div>
-            <p className="phover bg-footer">Postar</p>
+            <p 
+              className="bg-footer text-white mobile:block desktop:hidden desktop:hover:block"
+            >
+              Postar
+            </p>
           </button>
           {tittle==='Vídeos' &&
             <PopUpVideoUpload isOpen={editOpen} onClose={fecharEdit}/>

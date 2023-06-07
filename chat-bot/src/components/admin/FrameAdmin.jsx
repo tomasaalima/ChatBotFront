@@ -30,7 +30,11 @@ function FrameAdmin(props) {
           </h2>
           
         </div>
-        <p className="phover bg-footer">Editar</p>
+        <p
+          className="text-white bg-footer mobile:block desktop:hidden desktop:hover:block"
+        >
+          Editar
+        </p>
       </button>
     </NavLink>
   );
