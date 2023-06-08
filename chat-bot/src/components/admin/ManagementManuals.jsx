@@ -36,7 +36,6 @@ function ManagementManuals({ document, unique }){
     };
 
     //PopUp Edit
-
     const [editOpen, setEditOpen] = useState(false);
     const abrirEdit = () => {
         setEditOpen(true);
@@ -46,7 +45,7 @@ function ManagementManuals({ document, unique }){
     }
 
     return(
-        <div 
+        <div //Frame
             onMouseEnter={() => setMouseEnter(true)}
             onMouseLeave={() => setMouseEnter(false)}
             className="h-40 w-full m-auto flex items-center justify-center"
@@ -54,29 +53,29 @@ function ManagementManuals({ document, unique }){
         <span 
             className="w-4/5 h-4/6"
         >
-            <div 
+            <div //Container dentro do Frame
                 className="bg-green-400 h-5/6 flex items-center justify-center"
             >
                 <div>
-                    <img 
+                    <img //Imagem
                         src="/img/Pdf-Icon.svg" 
                         alt="Icon PDF"
                         className="w-16"
                     />
                 </div>
 
-                <div 
+                <div //Título
                     className=" w-4/6"
                 >
                     <h2 
-                        className="text-green-950 mt-3 "
+                        className="text-green-950 mt-3 font-roboto"
                     >
                         {`${document}`}
                     </h2>
                     <div 
                         className="flex"
                     >
-                        <div 
+                        <div //Botão de download
                             className="w-full flex justify-end items-end"
                         >
                         {download && (
@@ -113,13 +112,13 @@ function ManagementManuals({ document, unique }){
                     Editar
                 </button>
 
-                <PopupAlert 
+                <PopupAlert //frame dinâmico de remoção
                     isOpen={modalOpen} 
                     onClose={handleCloseModal}
                     id={idValue}
                     type={"manuais"}
                 />
-                <PopupEdit 
+                <PopupEdit //frame dinâmico de edição
                     isOpen={editOpen} 
                     onClose={fecharEdit} 
                     id={idValue}

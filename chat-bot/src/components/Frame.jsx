@@ -38,7 +38,7 @@ function Frame({src, alt, className, tittle, to}) {
             className={`${mouseEnter ? "flex" : "mobile:flex desktop:hidden"}`}
           >
             <p
-              className="w-full bg-footer"
+              className="w-full bg-footer font-exo2"
             >
               Acessar
             </p>

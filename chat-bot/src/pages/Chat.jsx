@@ -155,13 +155,13 @@ function Chat () {
         "
       >
       <header
-            className="bg-chat-header text-center text-white"
+            className="bg-chat-header text-center text-white font-exo2"
           > 
             Chat Bot 
           </header>
         <div
           ref={ref}
-          id="my-scrollable-div"
+          id="my-scrollable-div" 
           className="absolute w-full h-full center bg-white shadow-xl overflow-auto pb-16"
         >
           {conversation}

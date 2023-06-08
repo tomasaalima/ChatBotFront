@@ -57,7 +57,7 @@ function FramManual({document, id}){
                     className=" w-4/6"
                 >
                     <h2 
-                        className="text-green-950 mt-3 "
+                        className="text-green-950 mt-3 font-roboto"
                     >
                         {`${document}`}
                     </h2>
@@ -87,7 +87,7 @@ function FramManual({document, id}){
             </div>
             <button 
                     onClick={handleView}
-                    className={`items-center justify-center w-full h-1/4 bg-footer bottom-0 font-exo2 ${mouseEnter ? "block" : "mobile:block desktop:hidden"}`}
+                    className={`font-exo2 items-center justify-center w-full h-1/4 bg-footer bottom-0 font-exo2 ${mouseEnter ? "block" : "mobile:block desktop:hidden"}`}
                 >
                 Visualizar
             </button>

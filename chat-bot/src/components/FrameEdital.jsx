@@ -57,7 +57,7 @@ function FrameEdital({document, id}){
                         className=" w-4/6"
                     >
                         <h2 
-                            className="text-green-950 mt-3 "
+                            className="text-green-950 mt-3 font-roboto"
                         >
                             {document}
                         </h2>

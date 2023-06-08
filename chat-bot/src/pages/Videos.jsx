@@ -56,7 +56,7 @@ function VidAndImages(){
                             className="w-full"
                         >
                             <button
-                                className={`w-1/2 h-11 items-center font-robot text-footer border border-b-green-600 ${
+                                className={`w-1/2 h-11 items-center font-exo2 text-footer border border-b-green-600 ${
                                         activeTab === "videos"
                                         ? "bg-footer text-white"
                                         : "bg-slate-200 text-gray-900"
@@ -66,7 +66,7 @@ function VidAndImages(){
                                 VÍDEOS
                             </button>
                             <button
-                                className={`w-1/2 h-11 items-center font-robot text-footer border border-b-green-600 ${
+                                className={`w-1/2 h-11 items-center font-exo2 text-footer border border-b-green-600 ${
                                         activeTab === "manuals"
                                         ? "bg-footer text-white"
                                         : "bg-slate-200 text-gray-900"

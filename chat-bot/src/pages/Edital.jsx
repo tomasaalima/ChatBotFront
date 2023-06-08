@@ -47,7 +47,7 @@ function Edital(){
                         "
                     >
                         <h1 //Cabeçalho do painel
-                            className="w-11/12 flex justify-center h-11 items-center font-robot text-footer border-b-2 border-b-green-600"
+                            className="w-11/12 flex justify-center h-11 items-center font-robot text-footer border-b-2 border-b-green-600 font-exo2"
                         >
                             Editais
                         </h1>
